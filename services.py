@@ -224,7 +224,7 @@ def administrar_chatbot(text,number, messageId, name):
     list.append(markRead)
     time.sleep(2)
 
-    if  "ola" or "a" or "oii" or "tudo bem?" or "bom dia" or "ola"  in text :
+    if  "ola" in text or "oi" in text or "bom dia" in text or "1" in text:
         body = "Olá 👋, seja bem vindo a Triar Contabiilidade, qual setor gostaria de entrar em contato?"
         footer = "Equipe Triar"
         options = ["🛎️Recepção", "🤵‍♀️RH","🧾Fiscal","💸Financeiro","📒Contábil", "✅Cadastro e Legalização","👨‍💻Sistemas e Aplicativos"]
