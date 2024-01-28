@@ -229,8 +229,7 @@ def administrar_chatbot(text,number, messageId, name):
     list = []
     print("mensagem do usuário: ",text)
 
-    markRead = markRead_Mensagem(messageId)
-    list.append(markRead)
+    list.append(markRead_Mensagem(messageId))
     time.sleep(2)
 
     if  verifyFirst(text):
@@ -238,69 +237,57 @@ def administrar_chatbot(text,number, messageId, name):
         footer = "Equipe Triar"
         options = ["🛎️Recepção", "🤵‍♀️RH","🧾Fiscal","💸Financeiro","📒Contábil", "✅Cadastro e Legalização","👨‍💻Sistemas e Aplicativos"]
 
-        listReply = listReply_Messagem(number, options, body, footer, "sed1",messageId)
-        replyReaction = replyReaction_Messagem(number, messageId, "🫡")
-
-        list.append(replyReaction)
-        list.append(listReply)
+        list.append(listReply_Messagem(number, options, body, footer, "sed1",messageId))
+        list.append(replyReaction_Messagem(number, messageId, "🫡"))
     
     elif "recepção" in text:
         body = "Quer falar com quem da recepção? "
         footer = "Equipe Recepção 👇"
         options = ["Ariane", "Larissa Trindade"]
 
-        replyButtonData = buttonReply_Messagem(number, options, body, footer, "sed2",messageId)
-        list.append(replyButtonData)
+        list.append(buttonReply_Messagem(number, options, body, footer, "sed2",messageId))
 
     elif "rh" in text:
         body = "Quer falar com quem do RH?"
         footer = "Equipe RH 👇"
         options = ["Sarah","Camila","Heloisa"]
 
-        replyButtonData = buttonReply_Messagem(number, options, body, footer, "sed3",messageId)
-        list.append(replyButtonData)
+        list.append(buttonReply_Messagem(number, options, body, footer, "sed3",messageId))
 
     elif "fiscal" in text:
         body = "Quer falar com quem do fiscal? "
         footer = "Equipe Fiscal 👇"
         options = ["Aline","Rysssa","Polyana" ]
 
-        buttonReply = buttonReply_Messagem(number, options, body, footer, "sed4",messageId)
-        list.append(buttonReply)
+        list.append(buttonReply_Messagem(number, options, body, footer, "sed4",messageId))
 
     elif "contábil" in text :
         body = "Quer falar com quem do Contábil?"
         footer = "Equipe Contabil 👇"
         options = ["Pessoa1", "Pessoa2", "Pessoa3"]
 
-        buttonReply = buttonReply_Messagem(number, options, body, footer, "sed5",messageId)
-        list.append(buttonReply)
+        list.append(buttonReply_Messagem(number, options, body, footer, "sed5",messageId))
 
     elif "financeiro" in text:
         body = "Quer falar com quem do Financeiro?"
         footer = "Equipe Financeiro 👇"
         options = ["Ana Paula"]
 
-        buttonReply = buttonReply_Messagem(number, options, body, footer, "sed6",messageId)
-        list.append(buttonReply)
+        list.append(buttonReply_Messagem(number, options, body, footer, "sed6",messageId))
     
     elif "cadastro e legalização" in text:
         body = "Quer falar com quem do Cadastro?"
         footer = "Equipe Cadastro e Legalização 👇"
         options = ["Marcia", "Alana", "Larah","Thatiele"]
 
-
-        listReply = listReply_Messagem(number, options, body, footer, "sed7",messageId)
-        list.append(listReply)
+        list.append(listReply_Messagem(number, options, body, footer, "sed7",messageId))
 
     elif "sistemas e aplicativos" in text:
         body = "Quer falar com quem de Sistemas e Aplicativos?"
         footer = "Sistemas e Aplicativos 👇"
         options = ["João","Yan"]
 
-
-        buttonReply = buttonReply_Messagem(number, options, body, footer, "sed8",messageId)
-        list.append(buttonReply)
+        list.append(buttonReply_Messagem(number, options, body, footer, "sed8",messageId))
         
     else :
         data = text_Mensagem(number,"Não entendi sua pergunta, para voltar para o menu inicial digite '1' ")
