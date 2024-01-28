@@ -225,7 +225,7 @@ def administrar_chatbot(text,number, messageId, name):
     time.sleep(2)
 
     if  "ola" in text or "oi" in text or "bom dia" in text or "1" in text:
-        body = "Olá "+name+", seja bem vindo a Triar Contabiilidade, qual setor gostaria de entrar em contato?"
+        body = "Olá "+name+" 👋, seja bem vindo a Triar Contabiilidade, sou o assistente virtual da Triar Contabilidade, qual setor gostaria de entrar em contato?"
         footer = "Equipe Triar"
         options = ["🛎️Recepção", "🤵‍♀️RH","🧾Fiscal","💸Financeiro","📒Contábil", "✅Cadastro e Legalização","👨‍💻Sistemas e Aplicativos"]
 
@@ -275,18 +275,24 @@ def administrar_chatbot(text,number, messageId, name):
         buttonReply = buttonReply_Messagem(number, options, body, footer, "sed6",messageId)
         list.append(buttonReply)
     
-    elif "cadastro" in text or "legalização" in text:
-        textMessage = text_Mensagem(number, "Cadastro e Legalização")
-        list.append(textMessage)
+    elif "cadastro e legalização" in text:
+        body = "Quer falar com quem do Cadastro?"
+        footer = "Equipe Cadastro e Legalização 👇"
+        options = ["Marcia", "Alana", "Larah", "Thatiele"]
 
-    elif "sistema" in text or "aplicativo" in text:
-        textMessage = text_Mensagem(number, "Sistemas e Aplicativos")
-        list.append(textMessage)
+
+        buttonReply = buttonReply_Messagem(number, options, body, footer, "sed7",messageId)
+        list.append(buttonReply)
+
+    elif "sistema e aplicativos" in text:
+        body = "Quer falar com quem de Sistemas e Aplicativos?"
+        footer = "Sistemas e Aplicativos 👇"
+        options = ["Marcia", "Alana", "Larah", "Thatiele"]
+
+
+        buttonReply = buttonReply_Messagem(number, options, body, footer, "sed8",messageId)
+        list.append(buttonReply)
         
-    elif "não" in text or "obrigado" in text:
-        textMessage = text_Mensagem(number,"Agradecemos o contato, caso precise de algo mais entre em contato. Tenha um bom dia. 👋")
-        list.append(textMessage)
-    
     else :
         data = text_Mensagem(number,"Não entendi sua pergunta, para voltar para o menu inicial digite '1' ")
         list.append(data)
