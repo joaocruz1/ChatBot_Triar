@@ -224,7 +224,7 @@ def administrar_chatbot(text,number, messageId, name):
     list.append(markRead)
     time.sleep(2)
 
-    if  "ola" in text:
+    if  "ola" or "a" or "oii" or "tudo bem?" or "bom dia" or "ola"  in text :
         body = "Olá 👋, seja bem vindo a Triar Contabiilidade, qual setor gostaria de entrar em contato?"
         footer = "Equipe Triar"
         options = ["🛎️Recepção", "🤵‍♀️RH","🧾Fiscal","💸Financeiro","📒Contábil", "✅Cadastro e Legalização","👨‍💻Sistemas e Aplicativos"]
@@ -288,7 +288,7 @@ def administrar_chatbot(text,number, messageId, name):
         list.append(textMessage)
     
     else :
-        data = text_Mensagem(number,"Não entendi sua pergunta")
+        data = text_Mensagem(number,"Não entendi sua pergunta, para voltar para o menu inicial digite '1' ")
         list.append(data)
 
     for item in list:
