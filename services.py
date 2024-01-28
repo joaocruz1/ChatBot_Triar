@@ -215,6 +215,15 @@ def markRead_Mensagem(messageId):
     )
     return data
 
+def verifyFirst(text):
+    firstmessage = ['ola', 'oi', 'bom dia', 'boa tarde', '1']
+
+    for msg in firstmessage:
+        if msg == text:
+            return True
+    
+    return False
+
 def administrar_chatbot(text,number, messageId, name):
     text = text.lower() #mensagem do usuario
     list = []
@@ -224,7 +233,7 @@ def administrar_chatbot(text,number, messageId, name):
     list.append(markRead)
     time.sleep(2)
 
-    if  "ola" in text or "oi" in text or "bom dia" in text or "1" in text:
+    if  verifyFirst(text):
         body = "Olá "+name+" 👋, seja bem vindo a Triar Contabiilidade, sou o assistente virtual da Triar Contabilidade, qual setor gostaria de entrar em contato?"
         footer = "Equipe Triar"
         options = ["🛎️Recepção", "🤵‍♀️RH","🧾Fiscal","💸Financeiro","📒Contábil", "✅Cadastro e Legalização","👨‍💻Sistemas e Aplicativos"]
