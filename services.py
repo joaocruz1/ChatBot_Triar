@@ -234,7 +234,7 @@ def administrar_chatbot(text,number, messageId, name):
     time.sleep(2)
 
     if  verifyFirst(text):
-        body = "Olá "+name+" 👋, seja bem vindo a Triar Contabiilidade, sou o assistente virtual da Triar Contabilidade, qual setor gostaria de entrar em contato?"
+        body = "Olá "+name+" 👋, seja bem vindo a Triar Contabiilidade, sou o assiste virtual 🤖, qual setor gostaria de entrar em contato?"
         footer = "Equipe Triar"
         options = ["🛎️Recepção", "🤵‍♀️RH","🧾Fiscal","💸Financeiro","📒Contábil", "✅Cadastro e Legalização","👨‍💻Sistemas e Aplicativos"]
 
