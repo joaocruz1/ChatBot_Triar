@@ -19,5 +19,3 @@ stickers = {
     "gato_triste": 210492141865964,
     "gato_cansado": 1021308728970759
 }
-
-document_url = "https://www.africau.edu/images/default/sample.pdf"

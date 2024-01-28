@@ -4,9 +4,9 @@ import services
 
 app = Flask(__name__)
 
-@app.route('/bienvenido', methods=['GET'])
-def  bemvindo():
-    return 'Olá seja bem vindo!!!!!'
+@app.route('/', methods=['GET'])
+def  inicio():
+    return 'Pagina inicial teste'
 
 @app.route('/webhook', methods=['GET'])
 def verificar_token():
@@ -14,10 +14,13 @@ def verificar_token():
         token = request.args.get('hub.verify_token')
         challenge = request.args.get('hub.challenge')
 
-        if token == sett.token and challenge != None:
-            return challenge
+        if token == sett.token:
+            if challenge != None:
+                return challenge
+            else:
+                return 'challenge nulo'
         else:
-            return 'token incorrecto', request.args.get('hub.verify_token')
+            return 'token incorreto', request.args.get('hub.verify_token')
     except Exception as e:
         return e,403
     

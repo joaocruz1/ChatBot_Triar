@@ -62,15 +62,18 @@ def text_Mensagem(number,text):
 def buttonReply_Messagem(number, options, body, footer, sedd,messageId):
     buttons = []
     for i, option in enumerate(options):
-        buttons.append(
-            {
-                "type": "reply",
-                "reply": {
-                    "id": sedd + "_btn_" + str(i+1),
-                    "title": option
+        if i < 2:
+            buttons.append(
+                {
+                    "type": "reply",
+                    "reply": {
+                        "id": sedd + "_btn_" + str(i+1),
+                        "title": option
+                    }
                 }
-            }
-        )
+            )
+        else:
+            print(option)
 
     data = json.dumps(
         {
@@ -165,14 +168,8 @@ def sticker_Messagem(number, sticker_id):
 
 def get_media_id(media_name , media_type):
     media_id = ""
-    if media_type == "sticker":
+    if media_type == "sticker": #Para imagem, video e audio copiar if
         media_id = sett.stickers.get(media_name, None)
-    #elif media_type == "image":
-    #    media_id = sett.images.get(media_name, None)
-    #elif media_type == "video":
-    #    media_id = sett.videos.get(media_name, None)
-    #elif media_type == "audio":
-    #    media_id = sett.audio.get(media_name, None)
     return media_id
 
 def replyReaction_Messagem(number, messageId, emoji):
