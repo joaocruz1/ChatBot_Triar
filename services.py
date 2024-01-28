@@ -287,16 +287,16 @@ def administrar_chatbot(text,number, messageId, name):
     elif "cadastro e legalização" in text:
         body = "Quer falar com quem do Cadastro?"
         footer = "Equipe Cadastro e Legalização 👇"
-        options = ["Marcia", "Alana", "Larah"]
+        options = ["Marcia", "Alana", "Larah","Thatiele"]
 
 
-        buttonReply = buttonReply_Messagem(number, options, body, footer, "sed7",messageId)
-        list.append(buttonReply)
+        listReply = listReply_Messagem(number, options, body, footer, "sed7",messageId)
+        list.append(listReply)
 
     elif "sistemas e aplicativos" in text:
         body = "Quer falar com quem de Sistemas e Aplicativos?"
         footer = "Sistemas e Aplicativos 👇"
-        options = ["Marcia", "Alana", "Larah", "Thatiele"]
+        options = ["João","Yan"]
 
 
         buttonReply = buttonReply_Messagem(number, options, body, footer, "sed8",messageId)
