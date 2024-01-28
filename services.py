@@ -217,6 +217,7 @@ def markRead_Mensagem(messageId):
 
 def administrar_chatbot(text,number, messageId, name):
     text = text.lower() #mensaje que envio el usuario
+    firstmensage = ["oi","ola","bom dia","boa tarde"]
     list = []
     print("mensagem do usuário: ",text)
 
@@ -224,7 +225,7 @@ def administrar_chatbot(text,number, messageId, name):
     list.append(markRead)
     time.sleep(2)
 
-    if text != None:
+    if  firstmensage in text:
         body = "Olá 👋, seja bem vindo a Triar Contabiilidade, qual setor gostaria de entrar em contato?"
         footer = "Equipe Triar"
         options = ["🛎️Recepção", "🤵‍♀️RH","🧾Fiscal","💸Financeiro","📒Contábil", "✅Cadastro e Legalização","👨‍💻Sistemas e Aplicativos"]
