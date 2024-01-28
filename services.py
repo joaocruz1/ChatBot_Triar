@@ -62,18 +62,15 @@ def text_Mensagem(number,text):
 def buttonReply_Messagem(number, options, body, footer, sedd,messageId):
     buttons = []
     for i, option in enumerate(options):
-        if i < 2:
-            buttons.append(
-                {
-                    "type": "reply",
-                    "reply": {
-                        "id": sedd + "_btn_" + str(i+1),
-                        "title": option
-                    }
+        buttons.append(
+            {
+                "type": "reply",
+                "reply": {
+                    "id": sedd + "_btn_" + str(i+1),
+                    "title": option
                 }
-            )
-        else:
-            print(option)
+            }
+        )
 
     data = json.dumps(
         {
