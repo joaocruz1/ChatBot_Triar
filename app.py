@@ -14,7 +14,7 @@ def  inicio():
 def login():
     return render_template('login.html')
 
-@app.route('/login/auth', methods=['GET'])
+@app.route('/auth', methods=['GET'])
 def auth():
     f = open(url_for('static', 'users.json'))
     users = json.load(f.read())
@@ -29,7 +29,7 @@ def auth():
         if u['name'] == user and u['password'] == password:
             return redirect(url_for('principal'))
     
-    return redirect(url_for('index?Auth=NotAuthorized'))
+    return redirect(url_for('login?Auth=NotAuthorized'))
 
 
 @app.route('/webhook', methods=['GET'])
