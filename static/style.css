@@ -1,0 +1,101 @@
+/* static/style.css */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+h1, h2 {
+    color: #ffffff;
+}
+
+h2 {
+    margin-bottom: 20px;  /* Adicionado para espaço abaixo do título */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    margin-bottom: 8px;
+    color: #c7c7c7;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    width: 190px;
+}
+
+textarea:focus, input:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}
+
+input[type="submit"] {
+    border-radius: 20px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #627aff;
+    border: 2px solid #fcfcfc;
+    color: #fcfcfc;
+    text-shadow: 1px black;
+    transition: 0.5s;
+}
+
+/* Adiciona estilo para a página principal */
+h1.welcome {
+    color: #333;
+    font-size: 24px;
+}
+
+/* Adiciona estilo para a barra de navegação */
+nav {
+    background-color: #333;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+form {
+    border-radius: 50px;
+    background-color: rgb(81, 79, 248, 0.9) ;
+    width: 300px;
+    height: 350px;
+}
+
+

@@ -1,12 +1,36 @@
-from flask import Flask, request
+from flask import Flask, request, redirect, render_template, url_for
 import sett 
 import services
+import json
 
 app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def  inicio():
     return 'Pagina inicial teste'
+
+
+@app.route('/login', methods=['GET'])
+def login():
+    return render_template('login.html')
+
+@app.route('/login/auth', methods=['GET'])
+def auth():
+    f = open('users.json', 'r')
+    users = json.load(f.read())
+
+    try:
+        user = request.form['user']
+        password = request.form['senha']
+    except:
+        return 'Formulário não preenchido corretamente'
+
+    for u in users:
+        if u['name'] == user and u['password'] == password:
+            return redirect(url_for('principal'))
+    
+    return redirect(url_for('index?Auth=NotAuthorized'))
+
 
 @app.route('/webhook', methods=['GET'])
 def verificar_token():
@@ -23,7 +47,7 @@ def verificar_token():
             return 'token incorreto', request.args.get('hub.verify_token')
     except Exception as e:
         return e,403
-    
+
 @app.route('/webhook', methods=['POST'])
 def receber_mensagens():
     try:
