@@ -244,23 +244,23 @@ def administrar_chatbot(text,number, messageId, name):
     elif "rh" in text:
         body = "Quer falar com quem do RH?"
         footer = "Equipe RH 👇"
-        options = ["Sarah","Camila","Heloisa"]
+        options = ["Sarah Olanda","Camila Melo","Heloisa Faria","Divina Silveira"]
 
-        list.append(buttonReply_Messagem(number, options, body, footer, "sed3",messageId))
+        list.append(listReply_Messagem(number, options, body, footer, "sed3",messageId))
 
     elif "fiscal" in text:
         body = "Quer falar com quem do fiscal? "
         footer = "Equipe Fiscal 👇"
-        options = ["Aline","Rysssa","Polyana" ]
+        options = ["Aline Castro","Bianca Lima","Bruna Ribeiro","Claudia Santos","Endi","Larissa Cavini","Ludmilla Ferreira","Monica Antonioli","Rayssa Marin","" ]
 
-        list.append(buttonReply_Messagem(number, options, body, footer, "sed4",messageId))
+        list.append(listReply_Messagem(number, options, body, footer, "sed4",messageId))
 
     elif "contábil" in text :
         body = "Quer falar com quem do Contábil?"
         footer = "Equipe Contabil 👇"
-        options = ["Pessoa1", "Pessoa2", "Pessoa3"]
+        options = ["Arnold Freitas", "Davi dos Santos", "Leonardo Biagioli","Traciane Lemes"]
 
-        list.append(buttonReply_Messagem(number, options, body, footer, "sed5",messageId))
+        list.append(listReply_Messagem(number, options, body, footer, "sed5",messageId))
 
     elif "financeiro" in text:
         body = "Quer falar com quem do Financeiro?"
@@ -272,14 +272,14 @@ def administrar_chatbot(text,number, messageId, name):
     elif "cadastro e legalização" in text:
         body = "Quer falar com quem do Cadastro?"
         footer = "Equipe Cadastro e Legalização 👇"
-        options = ["Marcia", "Alana", "Larah","Thatiele"]
+        options = ["Márcia Braz", "Alana Gabriela", "Lara Serra","Thatiele"]
 
         list.append(listReply_Messagem(number, options, body, footer, "sed7",messageId))
 
     elif "sistemas e aplicativos" in text:
         body = "Quer falar com quem de Sistemas e Aplicativos?"
         footer = "Sistemas e Aplicativos 👇"
-        options = ["João","Yan"]
+        options = ["João Cruz","Yan Martins"]
 
         list.append(buttonReply_Messagem(number, options, body, footer, "sed8",messageId))
         
