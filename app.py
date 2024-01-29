@@ -16,21 +16,7 @@ def login():
 
 @app.route('/auth', methods=['GET'])
 def auth():
-    f = open(url_for('static', 'users.json'))
-    users = json.load(f.read())
-
-    try:
-        user = request.form['user']
-        password = request.form['senha']
-    except:
-        return 'Formulário não preenchido corretamente'
-
-    for u in users:
-        if u['name'] == user and u['password'] == password:
-            return redirect(url_for('principal'))
-    
-    return redirect(url_for('login?Auth=NotAuthorized'))
-
+    print("TESTE")
 
 @app.route('/webhook', methods=['GET'])
 def verificar_token():
