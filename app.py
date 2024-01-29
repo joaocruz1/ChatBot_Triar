@@ -16,7 +16,7 @@ def login():
 
 @app.route('/login/auth', methods=['GET'])
 def auth():
-    f = open('users.json', 'r')
+    f = open(url_for('static', 'users.json'))
     users = json.load(f.read())
 
     try:
