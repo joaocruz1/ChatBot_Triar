@@ -251,7 +251,7 @@ def administrar_chatbot(text,number, messageId, name):
     elif "fiscal" in text:
         body = "Quer falar com quem do fiscal? "
         footer = "Equipe Fiscal 👇"
-        options = ["Aline Castro","Bianca Lima","Bruna Ribeiro","Claudia Santos","Endi","Larissa Cavini","Ludmilla Ferreira","Monica Antonioli","Rayssa Marin","" ]
+        options = ["Aline Castro","Bianca Lima","Bruna Ribeiro","Claudia Santos","Endi Jacometti","Larissa Cavini","Ludmilla Ferreira","Monica Antonioli","Rayssa Marin"]
 
         list.append(listReply_Messagem(number, options, body, footer, "sed4",messageId))
 
