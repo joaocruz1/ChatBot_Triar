@@ -10,6 +10,7 @@ app.secret_key = 'qualquer string serve'
 
 @app.route('/', methods=['GET'])
 def  inicio():
+    print(session)
     if session['user'] != None and session['password'] != None:
         realizar_login(session['user'], session['password'])
 
@@ -40,7 +41,6 @@ def realizar_login(usuario, senha):
         print("Login bem-sucedido " + usuario)
         session['user'] = usuario
         session['password'] = senha
-        print(session)
         return redirect(url_for('principal'))
     else:
         print("Usuário ou senha incorretos.")
