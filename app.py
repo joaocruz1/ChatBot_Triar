@@ -35,7 +35,7 @@ def auth():
         return 'Houve um erro na autenticação', e
     
     #return redirect(url_for('login?Auth=NotAuthorized'))
-    return 'Código acabou'
+    return 'Código acabo'
 
 
 @app.route('/webhook', methods=['GET'])
