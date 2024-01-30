@@ -15,22 +15,9 @@ def  inicio():
 def login():
     return render_template('login.html')
 
-@app.route('/auth', methods=['POST'])
-def auth():
-    try:
-        user = request.form['user']
-        password = request.form['senha']
-    except Exception as e:
-        return 'Formulário não preenchido corretamente', e
-
-    try:
-        for u in users:
-            if u['name'] == user and u['password'] == password:
-                return redirect(url_for('principal'))
-    except Exception as e:
-        return 'Houve um erro na autenticação', e
-    
-    return redirect(url_for('login?Auth=NotAuthorized'))
+@app.route('/authuser', methods=['POST'])
+def authuser():
+    print("TESTE")
 
 
 @app.route('/webhook', methods=['GET'])
