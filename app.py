@@ -17,9 +17,21 @@ def login():
 
 @app.route('/authuser', methods=['POST'])
 def authuser():
-    print("TESTE")
+    user = request.form['user']
+    password = request.form['password']
 
-    return 'teste'
+    login_sucesso = realizar_login(user, password)
+
+    return 'Finalizado', login_sucesso
+
+def realizar_login(usuario, senha):
+    # Verificar se o usuário existe no dicionário e se a senha está correta
+    if usuario in users and users[usuario]['password'] == senha:
+        print("Login bem-sucedido " + usuario)
+        return True
+    else:
+        print("Usuário ou senha incorretos.")
+        return False
 
 
 @app.route('/webhook', methods=['GET'])
