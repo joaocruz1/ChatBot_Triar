@@ -10,14 +10,21 @@ app.secret_key = 'qualquer string serve'
 
 @app.route('/', methods=['GET'])
 def  inicio():
+    if session['user'] != None and session['password'] != None:
+        realizar_login(session['user'], session['password'])
+
     return redirect(url_for('login'))
 
 @app.route('/login', methods=['GET'])
 def login():
+    if session['user'] != None and session['password'] != None:
+        realizar_login(session['user'], session['password'])
     return render_template('login.html')
 
 @app.route('/principal', methods=['GET', 'POST'])
 def principal():
+    if session['user'] == None or session['password'] == None:
+        return redirect(url_for('login'))
     return render_template('principal.html')
 
 @app.route('/authuser', methods=['POST'])
