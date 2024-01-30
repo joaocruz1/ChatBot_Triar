@@ -8,11 +8,17 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def  inicio():
-    return 'Pagina inicial teste'
+    if session['user'] != None and session['password'] != None:
+        return realizar_login(session['user'], session['password'])
+    else:
+        return redirect(url_for('login'))
 
 
 @app.route('/login', methods=['GET'])
 def login():
+    if session['user'] != None and session['password'] != None:
+        return realizar_login(session['user'], session['password'])
+
     return render_template('login.html')
 
 @app.route('/principal', methods=['GET', 'POST'])
@@ -24,21 +30,18 @@ def authuser():
     user = request.form['user']
     password = request.form['password']
 
-    login = realizar_login(user, password)
-
-    if login:
-        return redirect(url_for('principal'))
-    else:
-        return redirect(url_for('login')+'?Error=NotAuthorized')
+    return realizar_login(user, password)
 
 def realizar_login(usuario, senha):
     # Verificar se o usuário existe no dicionário e se a senha está correta
     if usuario in users and users[usuario]['password'] == senha:
         print("Login bem-sucedido " + usuario)
-        return True
+        session['user'] = usuario
+        session['password'] = senha
+        return redirect(url_for('principal'))
     else:
         print("Usuário ou senha incorretos.")
-        return False
+        return redirect(url_for('login')+'?Error=NotAuthorized')
 
 
 @app.route('/webhook', methods=['GET'])
