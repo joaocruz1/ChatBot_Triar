@@ -20,9 +20,12 @@ def authuser():
     user = request.form['user']
     password = request.form['password']
 
-    login_sucesso = realizar_login(user, password)
+    login = realizar_login(user, password)
 
-    return 'Finalizado', login_sucesso
+    if login:
+        return redirect(url_for('principal'))
+    else:
+        return redirect(url_for('login')+'?Error=NotAuthorized')
 
 def realizar_login(usuario, senha):
     # Verificar se o usuário existe no dicionário e se a senha está correta
