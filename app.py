@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, render_template, url_for
+from flask import Flask, request, redirect, render_template, url_for, session
 import sett 
 import services
 import json
@@ -14,6 +14,10 @@ def  inicio():
 @app.route('/login', methods=['GET'])
 def login():
     return render_template('login.html')
+
+@app.route('/principal', methods=['GET', 'POST'])
+def principal():
+    return render_template('principal.html')
 
 @app.route('/authuser', methods=['POST'])
 def authuser():
