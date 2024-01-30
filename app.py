@@ -6,25 +6,27 @@ from users import users
 
 app = Flask(__name__)
 app.secret_key = 'qualquer string serve'
+session.setdefault('user',None)
+session.setdefault('password',None)
 
 
 @app.route('/', methods=['GET'])
 def  inicio():
     print(session)
-    if session['user'] != None and session['password'] != None:
-        realizar_login(session['user'], session['password'])
+    if 'user' in session and 'password' in session:
+        return realizar_login(session['user'], session['password'])
 
     return redirect(url_for('login'))
 
 @app.route('/login', methods=['GET'])
 def login():
-    if session['user'] != None and session['password'] != None:
-        realizar_login(session['user'], session['password'])
+    if 'user' in session and 'password' in session:
+        return realizar_login(session['user'], session['password'])
     return render_template('login.html')
 
 @app.route('/principal', methods=['GET', 'POST'])
 def principal():
-    if session['user'] == None or session['password'] == None:
+    if 'user' not in session or 'password' not in session:
         return redirect(url_for('login'))
     return render_template('principal.html')
 
