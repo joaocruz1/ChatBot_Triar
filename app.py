@@ -8,17 +8,11 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def  inicio():
-    if session['user'] != None and session['password'] != None:
-        return realizar_login(session['user'], session['password'])
-    else:
-        return redirect(url_for('login'))
-
+    print(session.get['user'])
+    return redirect(url_for('login'))
 
 @app.route('/login', methods=['GET'])
 def login():
-    if session['user'] != None and session['password'] != None:
-        return realizar_login(session['user'], session['password'])
-
     return render_template('login.html')
 
 @app.route('/principal', methods=['GET', 'POST'])
