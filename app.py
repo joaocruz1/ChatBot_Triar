@@ -5,10 +5,11 @@ import json
 from users import users
 
 app = Flask(__name__)
+app.secret_key = 'qualquer string serve'
+
 
 @app.route('/', methods=['GET'])
 def  inicio():
-    print(session.keys())
     return redirect(url_for('login'))
 
 @app.route('/login', methods=['GET'])
