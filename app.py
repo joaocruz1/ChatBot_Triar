@@ -43,7 +43,7 @@ def realizar_login(usuario, senha):
         return redirect(url_for('principal'))
     else:
         print("Usuário ou senha incorretos.")
-        return redirect(url_for('login')+"ErrorUser")
+        return redirect(url_for('login')+"Error=NotAuthorized")
 
 
 @app.route('/webhook', methods=['GET'])
