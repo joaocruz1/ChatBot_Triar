@@ -19,17 +19,23 @@ def auth():
     f = open(url_for('static', 'users.json'))
     users = json.load(f.read())
 
+    print(users)
+
     try:
         user = request.form['user']
         password = request.form['senha']
-    except:
-        return 'Formulário não preenchido corretamente'
+    except Exception as e:
+        return 'Formulário não preenchido corretamente', e
 
-    for u in users:
-        if u['name'] == user and u['password'] == password:
-            return redirect(url_for('principal'))
+    try:
+        for u in users:
+            if u['name'] == user and u['password'] == password:
+                return redirect(url_for('principal'))
+    except Exception as e:
+        return 'Houve um erro na autenticação', e
     
-    return redirect(url_for('login?Auth=NotAuthorized'))
+    #return redirect(url_for('login?Auth=NotAuthorized'))
+    return 'Código acabou'
 
 
 @app.route('/webhook', methods=['GET'])
