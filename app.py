@@ -6,9 +6,6 @@ from users import users
 
 app = Flask(__name__)
 app.secret_key = 'qualquer string serve'
-session.setdefault('user',None)
-session.setdefault('password',None)
-
 
 @app.route('/', methods=['GET'])
 def  inicio():
