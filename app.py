@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def  inicio():
-    print(session.get['user'])
+    print(session.keys())
     return redirect(url_for('login'))
 
 @app.route('/login', methods=['GET'])
