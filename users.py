@@ -1,4 +1,4 @@
-{
+users = {
     "admin": {
         "name": "administrator",
         "type": "administrator",

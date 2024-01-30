@@ -2,6 +2,7 @@ from flask import Flask, request, redirect, render_template, url_for
 import sett 
 import services
 import json
+from users import users
 
 app = Flask(__name__)
 
@@ -16,11 +17,6 @@ def login():
 
 @app.route('/auth', methods=['POST'])
 def auth():
-    f = open(url_for('static', 'users.json'))
-    users = json.load(f.read())
-
-    print(users)
-
     try:
         user = request.form['user']
         password = request.form['senha']
@@ -34,8 +30,7 @@ def auth():
     except Exception as e:
         return 'Houve um erro na autenticação', e
     
-    #return redirect(url_for('login?Auth=NotAuthorized'))
-    return 'Código acabo'
+    return redirect(url_for('login?Auth=NotAuthorized'))
 
 
 @app.route('/webhook', methods=['GET'])
