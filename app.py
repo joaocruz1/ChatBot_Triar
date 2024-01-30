@@ -19,6 +19,8 @@ def login():
 def authuser():
     print("TESTE")
 
+    return 'teste'
+
 
 @app.route('/webhook', methods=['GET'])
 def verificar_token():
