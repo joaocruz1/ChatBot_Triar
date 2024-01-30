@@ -14,9 +14,23 @@ def  inicio():
 def login():
     return render_template('login.html')
 
-@app.route('/auth', methods=['GET'])
+@app.route('/auth', methods=['POST'])
 def auth():
-    print("TESTE")
+    f = open(url_for('static', 'users.json'))
+    users = json.load(f.read())
+
+    try:
+        user = request.form['user']
+        password = request.form['senha']
+    except:
+        return 'Formulário não preenchido corretamente'
+
+    for u in users:
+        if u['name'] == user and u['password'] == password:
+            return redirect(url_for('principal'))
+    
+    return redirect(url_for('login?Auth=NotAuthorized'))
+
 
 @app.route('/webhook', methods=['GET'])
 def verificar_token():
