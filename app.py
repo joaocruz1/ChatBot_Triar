@@ -40,6 +40,7 @@ def realizar_login(usuario, senha):
         print("Login bem-sucedido " + usuario)
         session['user'] = usuario
         session['password'] = senha
+        print(session)
         return redirect(url_for('principal'))
     else:
         print("Usuário ou senha incorretos.")
