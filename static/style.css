@@ -94,8 +94,10 @@ nav a:hover {
 form {
     border-radius: 50px;
     background-color: rgb(81, 79, 248, 0.9) ;
-    width: 300px;
-    height: 350px;
+    min-width: 220px;
+    min-height: 300px;
+    padding: 40px;
+    padding-top: 0px;
 }
 
 
