@@ -25,10 +25,13 @@
             <input type="submit" value="Entrar">
         </form>
     </body>
-    {% if alerta_js %}
     <script>
-        errormsg = document.getElementById('errormsg')
-        errormsg.style.removeProperty('display')
+        const queryString = window.location.search
+        error = URLSearchParams(queryString)
+
+        if ( 'Error' in error ){
+            errormsg = document.getElementById('errormsg')
+            errormsg.style.removeProperty('display')
+        }
     </script>
-    {% endif %}
 </html>
