@@ -33,7 +33,7 @@
         const queryString = window.location.search
         error = new URLSearchParams(queryString)
 
-        if ( 'Error' in error ){
+        if ( error.has('Error') ){
             errormsg = document.getElementById('errormsg')
             errormsg.style.removeProperty('display')
         }
