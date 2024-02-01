@@ -8,5 +8,10 @@ users = {
         "name": "common user",
         "type": "user",
         "password": "login"
+    },
+     "user": {
+        "name": "joao",
+        "type": "administrator",
+        "password": "123"
     }
 }
