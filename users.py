@@ -9,7 +9,7 @@ users = {
         "type": "user",
         "password": "login"
     },
-     "user": {
+     "joao": {
         "name": "joao",
         "type": "administrator",
         "password": "123"
