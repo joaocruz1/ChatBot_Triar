@@ -47,17 +47,18 @@ def realizar_login(usuario, senha):
         return redirect(url_for('login')+'?Error=NotAuthorized')
 
 
-@app.route('/sendMessage', methods=['POST'])
+@app.route('/sendMessage', methods=['GET'])
 def sendMessage():
     try:
-        number = request.form.get('number')
-        text = request.form.get('text')
-        message = services.text_Mensagem(number, text)
+        number = request.agrs.get('number')
+        text = request.agrs.get('text')
+        #message = services.text_Mensagem(number, text)
         
         print(number)
         print(text)
 
-        print("message = "+str(message))
+        #print("message = "+str(message))
+        return 'OK'
     except Exception as e:
         return 'não enviado '+str(e)
 

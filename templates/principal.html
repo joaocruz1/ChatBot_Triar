@@ -31,7 +31,6 @@
                     <li>Contact 1</li>
                     <li>Contact 2</li>
                     <li>Contact 3</li>
-                    <!-- Add more contacts as needed -->
                 </ul>
             </div>
 
@@ -39,10 +38,9 @@
                 
                 <div id="conversation">
                     <h2>Contact</h2>
-                    <!-- Chat messages will appear here -->
                 </div>
                 <div class="message-input">
-                    <input type="text" id="messageInput" placeholder="Type your message...">
+                    <input type="text" id="messageInput" placeholder="Digite sua mensagem">
                     <button id="sendButton" onclick="sendMessage(5535997184807)">Send</button>
                 </div>
             </div>
@@ -52,11 +50,16 @@
         function sendMessage(number){
             let message = document.getElementById('messageInput').value
             
-            let url = '/sendMessage'
+            let url = '/sendMessage?number=' + encodeURIComponent(number) + '&text=' + encodeURIComponent(message)
             
-            let request = new XMLHttpRequest()
-            request.open("POST", url, true)
-            request.send('number=' + encodeURIComponent(number) + '&text=' + encodeURIComponent(message))
+            let xhr = new XMLHttpRequest()
+            xhr.open("GET", url, true)
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    console.log('Resposta do servidor:', xhr.responseText);
+                }
+            };
+            xhr.send()
         }
     </script>
 </html>
