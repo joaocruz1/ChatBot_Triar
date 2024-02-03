@@ -47,6 +47,17 @@ def realizar_login(usuario, senha):
         return redirect(url_for('login')+'?Error=NotAuthorized')
 
 
+@app.route('/sendMessage', methods=['GET'])
+def sendMessage():
+    try:
+        number = request.form.get('number')
+        text = request.form.get('text')
+        message = services.text_Mensagem(number, text)
+        services.enviar_Mensagem_whatsapp(message)
+    except Exception as e:
+        return 'não enviado '+str(e)
+
+
 @app.route('/webhook', methods=['GET'])
 def verificar_token():
     try:
@@ -81,7 +92,7 @@ def receber_mensagens():
         return 'enviado'
 
     except Exception as e:
-        return 'no enviado ' + str(e)
+        return 'não enviado ' + str(e)
 
 if __name__ == '__main__':
     app.run()

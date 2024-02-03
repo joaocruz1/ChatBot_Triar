@@ -9,13 +9,13 @@
     <body>
 
         <header>
-            <div style="float: left;">
+            <div style="float: left; width: max-content;">
                 <img src="logo.png" alt="Logo" id="logo">
                 <p style="max-width: fit-content;">
                     Triar ChatHub
                 </p>
             </div>
-            <div style="float: right;">
+            <div style="float: right; width: max-content;">
                 <p style="max-width: fit-content;">
                     {{name}}
                 </p>
@@ -43,10 +43,17 @@
                 </div>
                 <div class="message-input">
                     <input type="text" id="messageInput" placeholder="Type your message...">
-                    <button id="sendButton">Send</button>
+                    <button id="sendButton" onclick="sendMessage(5535997184807)">Send</button>
                 </div>
             </div>
         </div>
-
     </body>
+    <script>
+        function sendMessage(number){
+            let message = document.getElementById('messageInput').value
+            let request = new XMLHttpRequest()
+            request.open("GET", "/sendMessage", true)
+            request.send('number=' + encodeURIComponent(number) + '&text=' + encodeURIComponent(message))
+        }
+    </script>
 </html>
