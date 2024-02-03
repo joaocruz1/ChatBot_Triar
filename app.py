@@ -52,12 +52,11 @@ def sendMessage():
     try:
         number = request.form.get('number')
         text = request.form.get('text')
-        #message = services.text_Mensagem(number, text)
-        
-        print(number)
-        print(text)
+        message = services.text_Mensagem(number, text)
 
-        #print("message = "+str(message))
+        print("message = "+str(message))
+
+        services.enviar_Mensagem_whatsapp(message)
         return 'OK'
     except Exception as e:
         return 'não enviado '+str(e)
