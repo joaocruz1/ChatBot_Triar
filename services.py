@@ -284,10 +284,12 @@ def administrar_chatbot(text,number, messageId, name):
 
         list.append(buttonReply_Messagem(number, options, body, footer, "sed8",messageId))
     elif "joão cruz" in text:
-        body = "Helloword" 
+        body = "Encaminhei sua mensagem para o João. Ele responderá em minutos através do assistente virtual. Aguarde sua resposta. 😊" 
         person = "joao"
 
         list.append(text_Mensagem(number,body))
+        list.append(replyReaction_Messagem(number, messageId, "👍"))
+
     else :
         data = text_Mensagem(number,"Não entendi sua pergunta, para voltar para o menu inicial digite '1' ")
         list.append(data)
@@ -295,4 +297,4 @@ def administrar_chatbot(text,number, messageId, name):
     for item in list:
         enviar_Mensagem_whatsapp(item)
 
-    return text
+    return person
