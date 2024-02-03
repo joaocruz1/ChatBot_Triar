@@ -25,7 +25,7 @@ def login():
 def principal():
     if 'user' not in session or 'password' not in session:
         return redirect(url_for('login'))
-    return render_template('principal.html')
+    return render_template('principal.html', name=session['user'].name)
 
 @app.route('/authuser', methods=['POST'])
 def authuser():
@@ -33,9 +33,6 @@ def authuser():
     password = request.form['password']
 
     return realizar_login(user, password)
-
-@app.route('/principal', methods=['GET'])
-
 
 def realizar_login(usuario, senha):
     # Verificar se o usuário existe no dicionário e se a senha está correta
