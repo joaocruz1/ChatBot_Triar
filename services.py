@@ -220,6 +220,7 @@ def verifyFirst(text):
 
 def administrar_chatbot(text,number, messageId, name):
     text = text.lower() #mensagem do usuario
+    person=''
     list = []
    
 
@@ -282,7 +283,11 @@ def administrar_chatbot(text,number, messageId, name):
         options = ["João Cruz","Yan Martins"]
 
         list.append(buttonReply_Messagem(number, options, body, footer, "sed8",messageId))
-        
+    elif "joão" in text:
+        body = "Helloword" 
+        persona = "joao"
+
+        list.append(text_Mensagem(number,body))
     else :
         data = text_Mensagem(number,"Não entendi sua pergunta, para voltar para o menu inicial digite '1' ")
         list.append(data)
