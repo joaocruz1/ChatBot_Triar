@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    height: 100vh;
+    overflow: hidden; /* Bloqueia a barra de rolagem da página */
+}
+
+header {
+    background-color: #25D366;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+#logo {
+    width: 40px;
+    margin-right: 15px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Por padrão, 1 coluna para telas menores */
+    height: 100%;
+}
+
+.grid-item {
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+#contacts {
+    border-right: 1px solid #ccc;
+}
+
+#chat {
+    height: 93%;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#conversation {
+    flex-grow: 1;
+    background-color: #fff;
+    overflow-y: auto;
+}
+
+.message-input {
+    display: flex;
+    align-items: center;
+    margin-top: 10px; /* Adicionado espaçamento acima do message-input */
+}
+
+#messageInput {
+    flex-grow: 1;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 3px;
+}
+
+#sendButton {
+    width: 20%;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color:#128C7E;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-left:14px ;
+}
+/* Consulta de mídia para telas maiores (por exemplo, tablets e desktops) */
+@media (min-width: 768px) {
+    .grid-container {
+        grid-template-columns: 30% 70%; /* Duas colunas para telas maiores */
+    }
+}
