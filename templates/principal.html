@@ -9,14 +9,19 @@
     <body>
 
         <header>
-            <img src="logo.png" alt="Logo" id="logo">
-            <p style="float: left;">
-                Triar ChatHub
-            </p>
-            <p style="float: right;">
-                {{name}}
-            </p>
-            <img src="{{url_for('static', filename=picture)}}" alt="Profile Picture">
+            <div style="float: left;">
+                <img src="logo.png" alt="Logo" id="logo">
+                <p style="max-width: fit-content;">
+                    Triar ChatHub
+                </p>
+            </div>
+            <div style="float: right;">
+                <p style="max-width: fit-content;">
+                    {{name}}
+                </p>
+                <img src="{{url_for('static', filename=picture)}}" alt="Profile Picture" id="profPic">
+            </div>
+            
         </header>
 
         <div id="container" class="grid-container">

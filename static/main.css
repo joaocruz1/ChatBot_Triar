@@ -22,6 +22,12 @@ header {
     margin-right: 15px;
 }
 
+#profPic {
+    max-width: 40px;
+    max-height: 40px;
+    border-radius: 10px;
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: 1fr; /* Por padrão, 1 coluna para telas menores */
