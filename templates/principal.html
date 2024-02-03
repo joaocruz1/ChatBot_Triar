@@ -50,16 +50,20 @@
         function sendMessage(number){
             let message = document.getElementById('messageInput').value
             
-            let url = '/sendMessage?number=' + encodeURIComponent(number) + '&text=' + encodeURIComponent(message)
-            
-            let xhr = new XMLHttpRequest()
-            xhr.open("GET", url, true)
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    console.log('Resposta do servidor:', xhr.responseText);
+            $.ajax({
+                url: '/sendMessage',
+                type: 'GET',
+                data: {
+                    'number': number,
+                    'text': message
+                },
+                success: function(response){
+                    console.log(response)
+                },
+                error: function(error){
+                    console.log(error)
                 }
-            };
-            xhr.send()
+            })
         }
     </script>
 </html>
