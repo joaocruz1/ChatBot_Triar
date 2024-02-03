@@ -53,7 +53,11 @@ def sendMessage():
         number = request.form.get('number')
         text = request.form.get('text')
         message = services.text_Mensagem(number, text)
-        services.enviar_Mensagem_whatsapp(message)
+        
+        print(number)
+        print(text)
+
+        print("message = "+str(message))
     except Exception as e:
         return 'não enviado '+str(e)
 
