@@ -2,16 +2,19 @@ users = {
     "admin": {
         "name": "administrator",
         "type": "administrator",
-        "password": "login"
+        "password": "login",
+        "picture": "none.jpg"
     },
     "user": {
         "name": "common user",
         "type": "user",
-        "password": "login"
+        "password": "login",
+        "picture": "none.jpg"
     },
      "joao": {
         "name": "joao",
         "type": "administrator",
-        "password": "123"
+        "password": "123",
+        "picture": "none.jpg"
     }
 }
