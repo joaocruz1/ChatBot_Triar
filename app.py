@@ -47,7 +47,7 @@ def realizar_login(usuario, senha):
         return redirect(url_for('login')+'?Error=NotAuthorized')
 
 
-@app.route('/sendMessage', methods=['GET'])
+@app.route('/sendMessage', methods=['POST'])
 def sendMessage():
     try:
         number = request.agrs.get('number')
