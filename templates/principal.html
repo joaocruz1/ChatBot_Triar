@@ -51,9 +51,12 @@
     <script>
         function sendMessage(number){
             let message = document.getElementById('messageInput').value
+            
+            let url = '/sendMessage?number=' + encodeURIComponent(number) + '&text=' + encodeURIComponent(message)
+            
             let request = new XMLHttpRequest()
-            request.open("GET", "/sendMessage", true)
-            request.send('number=' + encodeURIComponent(number) + '&text=' + encodeURIComponent(message))
+            request.open("GET", url, true)
+            request.send()
         }
     </script>
 </html>
