@@ -29,9 +29,16 @@
             <div id="contacts" class="grid-item">
                 <h2>Contacts</h2>
                 <ul>
-                    <li>Contact 1</li>
-                    <li>Contact 2</li>
-                    <li>Contact 3</li>
+                    <li onclick="changeClient(553597184807)" name="553597184807">
+                        <h4>Gustavo</h4>
+                        <h6>553597184807</h6>
+                        <p>Mensagem</p>
+                    </li>
+                    <li onclick="changeClient()" name="">
+                        <h4>Nome</h4>
+                        <h6>Número</h6>
+                        <p>Mensagem</p>
+                    </li>
                 </ul>
             </div>
 
@@ -42,20 +49,22 @@
                 </div>
                 <div class="message-input">
                     <input type="text" id="messageInput" placeholder="Digite sua mensagem">
-                    <button id="sendButton" onclick="sendMessage(553597184807)">Send</button>
+                    <button id="sendButton" onclick="sendMessage()" disabled>Send</button>
                 </div>
             </div>
         </div>
     </body>
     <script>
-        function sendMessage(number){
+        var currentClient
+
+        function sendMessage(){
             let message = document.getElementById('messageInput').value
             
             $.ajax({
                 url: '/sendMessage',
                 type: 'POST',
                 data: {
-                    'number': number,
+                    'number': currentClient,
                     'text': message
                 },
                 success: function(response){
@@ -65,6 +74,18 @@
                     console.log(error)
                 }
             })
+        }
+
+        function changeClient(number=null){
+            currentClient = number
+
+            if (currentClient == null){
+                document.getElementById('sendButton').disabled = true
+            }
+            else{
+                document.getElementById('sendButton').disabled = false
+            }
+            console.log(currentClient)
         }
     </script>
 </html>

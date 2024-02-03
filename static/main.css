@@ -44,6 +44,11 @@ header {
     border-right: 1px solid #ccc;
 }
 
+li {
+    list-style: none;
+    border: 1px solid #000;
+}
+
 #chat {
     height: 93%;
     overflow-y: hidden;
