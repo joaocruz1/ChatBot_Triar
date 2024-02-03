@@ -34,6 +34,9 @@ def authuser():
 
     return realizar_login(user, password)
 
+@app.route('/principal', methods=['GET'])
+
+
 def realizar_login(usuario, senha):
     # Verificar se o usuário existe no dicionário e se a senha está correta
     if usuario in users and users[usuario]['password'] == senha:

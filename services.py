@@ -221,7 +221,7 @@ def verifyFirst(text):
 def administrar_chatbot(text,number, messageId, name):
     text = text.lower() #mensagem do usuario
     list = []
-    print("mensagem do usuário: ",text)
+   
 
     list.append(markRead_Mensagem(messageId))
     time.sleep(2)
@@ -289,3 +289,5 @@ def administrar_chatbot(text,number, messageId, name):
 
     for item in list:
         enviar_Mensagem_whatsapp(item)
+
+    return text
