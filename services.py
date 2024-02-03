@@ -283,7 +283,7 @@ def administrar_chatbot(text,number, messageId, name):
         options = ["João Cruz","Yan Martins"]
 
         list.append(buttonReply_Messagem(number, options, body, footer, "sed8",messageId))
-    elif "joão" in text:
+    elif "joão cruz" in text:
         body = "Helloword" 
         person = "joao"
 
