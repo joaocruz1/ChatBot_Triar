@@ -50,8 +50,8 @@ def realizar_login(usuario, senha):
 @app.route('/sendMessage', methods=['GET'])
 def sendMessage():
     try:
-        number = request.agrs.get('number')
-        text = request.agrs.get('text')
+        number = request.form.get('number')
+        text = request.form.get('text')
         #message = services.text_Mensagem(number, text)
         
         print(number)
