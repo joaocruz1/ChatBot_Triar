@@ -29,6 +29,7 @@ header {
     width: max-content;
      display: flex; 
      max-height: 40px;
+    float: right;
 }
 
 #logo {
