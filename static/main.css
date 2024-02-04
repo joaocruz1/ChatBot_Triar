@@ -14,7 +14,21 @@ header {
     text-align: center;
     font-size: 18px;
     display: flex;
-    align-items: space-between;
+    align-items: center;
+}
+
+.header1 {
+    width: max-content;
+    display: flex; 
+    max-height: 40px;
+    margin-right: 90px;
+
+}
+
+.header2 {
+    width: max-content;
+     display: flex; 
+     max-height: 40px;
 }
 
 #logo {
