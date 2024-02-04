@@ -26,10 +26,11 @@ header {
 }
 
 .header2 {
+    position: absolute;
+    right: 0;
     width: max-content;
-     display: flex; 
-     max-height: 40px;
-    float: right;
+    display: flex; 
+    max-height: 40px;
 }
 
 #logo {
