@@ -14,7 +14,7 @@ header {
     text-align: center;
     font-size: 18px;
     display: flex;
-    align-items: center;
+    align-items: space-between;
 }
 
 #logo {
