@@ -28,6 +28,7 @@ header {
 .header2 {
     position: absolute;
     right: 0;
+    margin-right: 15px;
     width: max-content;
     display: flex; 
     max-height: 40px;
