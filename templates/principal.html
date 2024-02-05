@@ -100,12 +100,8 @@ function updateConversation() {
     var nomeContato = currentClient ? contatos[currentClient].name : '';
 
     // Atualiza o h2 na div de conversa
-    $("#conversation h2").text("Conversa com " + nomeContato);
-
-    // Se não houver contato selecionado, remove o h2
-    if (!currentClient) {
-        $("#conversation h2").remove();
-    }
+    $("#conversation h2").remove();  // Remove o h2 existente, se houver
+    $("#conversation").prepend("<h2>Conversa com " + nomeContato + "</h2>");
 }
 
     </script>
