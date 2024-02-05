@@ -67,12 +67,17 @@ ul {
       margin: 5px;
       display: inline-block;
       border-radius: 10px;
+      background-color: #a3a3a3;
     }
 
 li {
     list-style: none;
     cursor: pointer;
-    color: blue;
+    color: black;
+}
+
+ li:active{
+    color:#116936;
 }
 
 #chat {
