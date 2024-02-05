@@ -69,7 +69,7 @@ ul {
       background-color: #cfcfcf;
     }
 
-ul.select{
+.contato-list.selected {
     background-color: #128C7E; /* Adapte a cor conforme necessário */
     color: #fff; /* Adapte a cor conforme necessário */
 }
