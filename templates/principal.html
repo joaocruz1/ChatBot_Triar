@@ -30,12 +30,12 @@
         <div id="container" class="grid-container">
             <div id="contacts" class="grid-item">
                 <h2>Contacts</h2>
-                 {% for contato_key, contato in contatos.items() %}
+                {% for contato_key, contato in contatos.items() %}
                     <ul>
                         <li onclick="changeClient({{ contato['number'] }})"><strong>Nome:</strong> {{ contato['name'] }}</li>
                         <li><strong>Número:</strong> {{ contato['number'] }}</li>
                     </ul>
-                 {% endfor %}
+                {% endfor %}
             </div>
 
             <div id="chat" class="grid-item">
