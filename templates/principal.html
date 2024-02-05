@@ -95,6 +95,22 @@
     console.log(currentClient);
 }
 
+        function updateConversation() {
+    // Obtém o nome do contato atualmente selecionado
+    var nomeContato = currentClient ? contatos[currentClient].name : '';
+
+    // Se não houver contato selecionado, esconde o h2
+    if (!currentClient) {
+        $("#conversation h2").hide();
+    } else {
+        // Atualiza ou adiciona o h2 na div de conversa
+        if ($("#conversation h2").length) {
+            $("#conversation h2").text("Conversa com " + nomeContato).show();
+        } else {
+            $("#conversation").prepend("<h2>Conversa com " + nomeContato + "</h2>");
+        }
+    }
+}
 
 
     </script>
