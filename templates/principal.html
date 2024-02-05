@@ -53,55 +53,55 @@
     <script>
         var currentClient
 
-        function sendMessage(){
-            let message = document.getElementById('messageInput').value
-            
-            $.ajax({
-                url: '/sendMessage',
-                type: 'POST',
-                data: {
-                    'number': currentClient,
-                    'text': message
-                },
-                success: function(response){
-                    console.log(response)
-                },
-                error: function(error){
-                    console.log(error)
-                }
-            })
+       function sendMessage(){
+    let message = document.getElementById('messageInput').value;
+    
+    $.ajax({
+        url: '/sendMessage',
+        type: 'POST',
+        data: {
+            'number': currentClient,
+            'text': message
+        },
+        success: function(response){
+            // Atualiza a div de conversa com a mensagem enviada
+            $("#conversation").append("<p>" + message + "</p>");
+            console.log(response);
+        },
+        error: function(error){
+            console.log(error);
         }
-
+    });
+}
     function changeClient(number=null){
-        if (currentClient != null) {
-            // Remove a classe 'selected' da ul do contato anteriormente selecionado
-            $("#contato-" + currentClient).removeClass("selected");
+    if (currentClient != null) {
+        // Remove a classe 'selected' da ul do contato anteriormente selecionado
+        $("#contato-" + currentClient).removeClass("selected");
     }
 
-        currentClient = number;
+    currentClient = number;
 
-        if (currentClient == null){
-            document.getElementById('sendButton').disabled = true;
+    if (currentClient == null){
+        document.getElementById('sendButton').disabled = true;
     }
-        else{
-            document.getElementById('sendButton').disabled = false;
-            // Adiciona a classe 'selected' à ul do contato atualmente selecionado
-            $("#contato-" + currentClient).addClass("selected");
+    else{
+        document.getElementById('sendButton').disabled = false;
+        // Adiciona a classe 'selected' à ul do contato atualmente selecionado
+        $("#contato-" + currentClient).addClass("selected");
 
-            // Atualiza a div de conversa com o nome do contato
-            updateConversation();
+        // Atualiza a div de conversa com o nome do contato
+        updateConversation();
     }
     console.log(currentClient);
 }
 
-    function updateConversation() {
-        // Obtém o nome do contato atualmente selecionado
-        var nomeContato = contatos[currentClient].name;
+function updateConversation() {
+    // Obtém o nome do contato atualmente selecionado
+    var nomeContato = contatos[currentClient].name;
 
     // Atualiza o h2 na div de conversa
-        $("#conversation").html("<h2>Conversa com " + nomeContato + "</h2>");
+    $("#conversation").html("<h2>Conversa com " + nomeContato + "</h2>");
 }
-
 
     </script>
 </html>
