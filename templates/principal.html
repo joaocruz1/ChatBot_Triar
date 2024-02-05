@@ -72,23 +72,36 @@
             })
         }
 
-        function changeClient(number=null){
-            if (currentClient != null) {
-                // Remove a classe 'selected' da ul do contato anteriormente selecionado
-                $("#contato-" + currentClient).removeClass("selected");
-            }
+    function changeClient(number=null){
+        if (currentClient != null) {
+            // Remove a classe 'selected' da ul do contato anteriormente selecionado
+            $("#contato-" + currentClient).removeClass("selected");
+    }
 
-            currentClient = number;
+        currentClient = number;
 
-            if (currentClient == null){
-                document.getElementById('sendButton').disabled = true;
-        }
-            else{
-                document.getElementById('sendButton').disabled = false;
-                // Adiciona a classe 'selected' à ul do contato atualmente selecionado
-                $("#contato-" + currentClient).addClass("selected");
-        }
-        console.log(currentClient);
+        if (currentClient == null){
+            document.getElementById('sendButton').disabled = true;
+    }
+        else{
+            document.getElementById('sendButton').disabled = false;
+            // Adiciona a classe 'selected' à ul do contato atualmente selecionado
+            $("#contato-" + currentClient).addClass("selected");
+
+            // Atualiza a div de conversa com o nome do contato
+            updateConversation();
+    }
+    console.log(currentClient);
 }
+
+    function updateConversation() {
+        // Obtém o nome do contato atualmente selecionado
+        var nomeContato = contatos[currentClient].name;
+
+    // Atualiza o h2 na div de conversa
+        $("#conversation").html("<h2>Conversa com " + nomeContato + "</h2>");
+}
+
+
     </script>
 </html>
