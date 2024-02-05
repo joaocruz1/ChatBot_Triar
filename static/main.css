@@ -69,6 +69,11 @@ ul {
       background-color: #cfcfcf;
     }
 
+ul.select{
+    background-color: #128C7E; /* Adapte a cor conforme necessário */
+    color: #fff; /* Adapte a cor conforme necessário */
+}
+
 li {
     list-style: none;
     cursor: pointer;
