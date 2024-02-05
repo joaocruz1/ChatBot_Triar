@@ -75,10 +75,6 @@ li {
     color: black;
 }
 
- li:focus{
-    color:#116936;
-}
-
 #chat {
     height: 93%;
     overflow-y: hidden;
