@@ -30,18 +30,12 @@
         <div id="container" class="grid-container">
             <div id="contacts" class="grid-item">
                 <h2>Contacts</h2>
-                <ul>
-                    <li onclick="changeClient(553597184807)" name="553597184807">
-                        <h4>Gustavo</h4>
-                        <h6>553597184807</h6>
-                        <p>Mensagem</p>
-                    </li>
-                    <li onclick="changeClient(5535997478472)" name="5535997478472">
-                        <h4>João</h4>
-                        <h6>5535997478472</h6>
-                        <p>Mensagem</p>
-                    </li>
-                </ul>
+                 {% for contato_key, contato in contatos.items() %}
+                    <div class="balao">
+                        <li onclick="changeClient({{ contato['number'] }})><strong>Nome:</strong> {{ contato['name'] }}</li>
+                        <li><strong>Número:</strong> {{ contato['number'] }}</li>
+                    </div>
+                 {% endfor %}
             </div>
 
             <div id="chat" class="grid-item">
