@@ -80,6 +80,13 @@ li {
     color: black;
 }
 
+ #conversation h2 {
+    margin: 0;
+    padding: 10px;
+    background-color: #128C7E; /* Adapte a cor conforme necessário */
+    color: #fff; /* Adapte a cor conforme necessário */
+}
+
 #chat {
     height: 93%;
     overflow-y: hidden;
