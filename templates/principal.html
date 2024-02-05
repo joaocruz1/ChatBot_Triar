@@ -32,8 +32,8 @@
             <h2>Contacts</h2>
             {% for contato_key, contato in contatos.items() %}
               <ul class="contato-list" id="contato-{{ contato_key }}">
-                <li onclick="changeClient('{{ contato['number'] }}')" class="contato"><strong>Nome:</strong> {{ contato['name'] }}</li>
-                <li><strong>Número:</strong> {{ contato['number'] }}</li>
+                <li onclick="changeClient('{{ contato['number']}}')" class="contato">{{ contato['name'] }}</li>
+                <li> {{ contato['number'] }}</li>
               </ul>
             {% endfor %}
           </div>
