@@ -31,10 +31,10 @@
             <div id="contacts" class="grid-item">
                 <h2>Contacts</h2>
                  {% for contato_key, contato in contatos.items() %}
-                    <div class="balao">
-                        <li onclick="changeClient({{ contato['number'] }})><strong>Nome:</strong> {{ contato['name'] }}</li>
+                    <ul>
+                        <li onclick="changeClient({{ contato['number'] }})"><strong>Nome:</strong> {{ contato['name'] }}</li>
                         <li><strong>Número:</strong> {{ contato['number'] }}</li>
-                    </div>
+                    </ul>
                  {% endfor %}
             </div>
 
