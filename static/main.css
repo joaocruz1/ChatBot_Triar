@@ -134,6 +134,14 @@ li {
     transition: 0.5s;
 }
 
+#sendButton:active {
+    background-color: #ff0000; /* Por exemplo, mude para a cor desejada */
+    color: #ffffff; /* Mude a cor do texto se necessário */
+    /* Outros estilos desejados */
+}
+
+
+
 /* Consulta de mídia para telas maiores (por exemplo, tablets e desktops) */
 @media (min-width: 768px) {
     .grid-container {
