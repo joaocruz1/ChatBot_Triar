@@ -30,7 +30,7 @@ def principal():
     if 'user' not in session or 'password' not in session:
         return redirect(url_for('login'))
     user = users[session['user']]
-    return render_template('principal.html', name=user['name'], picture="img/"+user['picture'],contatos=contatos,person=session.get('person', None))
+    return render_template('principal.html', name=user['name'], picture="img/"+user['picture'],contatos=contatos, person=session.get('person', None))
 
 @app.route('/authuser', methods=['POST'])
 def authuser():
