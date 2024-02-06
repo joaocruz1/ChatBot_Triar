@@ -6,5 +6,9 @@ contatos = {
     "gustavo": {
         "name": "Gustavo",
         "number": "553597184807"
+    },
+    "yan": {
+        "name": "Yan",
+        "number": "553599218509"
     }
 }
