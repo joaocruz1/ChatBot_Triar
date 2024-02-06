@@ -135,8 +135,8 @@ li {
 }
 
 #sendButton:active {
-    background-color: #ff0000; /* Por exemplo, mude para a cor desejada */
-    color: #ffffff; /* Mude a cor do texto se necessário */
+    background-color: #02a2ff; /* Por exemplo, mude para a cor desejada */
+    color: #1100ff; /* Mude a cor do texto se necessário */
     /* Outros estilos desejados */
 }
 
