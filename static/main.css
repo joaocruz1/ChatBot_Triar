@@ -59,6 +59,7 @@ header {
 
 #contacts {
     border-right: 1px solid #ccc;
+    align-items: center;
 }
 
 ul {
