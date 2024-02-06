@@ -66,6 +66,7 @@
         success: function(response){
             // Atualiza a div de conversa com a mensagem enviada
             $("#conversation").append("<p>" + message + "</p>");
+            document.getElementById("messageInput").value = "";
             console.log(response);
         },
         error: function(error){
