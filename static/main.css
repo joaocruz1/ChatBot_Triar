@@ -125,6 +125,15 @@ li {
     border-radius: 10px;
     margin-left:14px ;
 }
+
+#sendButton:hover {
+    background-color: #627aff;
+    border: 2px solid #fcfcfc;
+    color: #fcfcfc;
+    text-shadow: 1px black;
+    transition: 0.5s;
+}
+
 /* Consulta de mídia para telas maiores (por exemplo, tablets e desktops) */
 @media (min-width: 768px) {
     .grid-container {
