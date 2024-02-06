@@ -62,6 +62,10 @@ header {
     
 }
 
+.selected-contact {
+    background-color: #00a2ff; /* Cor de fundo desejada */
+}
+
 ul {
       padding: 35px;
       margin: 5px;

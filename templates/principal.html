@@ -77,26 +77,31 @@
     }
 
     function changeClient(number=null, name=null){
+        
         if (currentClient != null) {
             // Remove a classe 'selected' da ul do contato anteriormente selecionado
             $("#contato-" + currentClient).removeClass("selected");
-        }
+    }
 
         currentClient = number;
 
         if (currentClient == null){
-            document.getElementById('sendButton').disabled = true;
-        }
+         document.getElementById('sendButton').disabled = true;
+    }
         else{
-            document.getElementById('sendButton').disabled = false;
-            // Adiciona a classe 'selected' à ul do contato atualmente selecionado
-            $("#contato-" + currentClient).addClass("selected");
+                document.getElementById('sendButton').disabled = false;
+                 // Adiciona a classe 'selected' à ul do contato atualmente selecionado
+                $("#contato-" + currentClient).addClass("selected");
 
-            // Atualiza a div de conversa com o nome do contato
-            updateConversation(name);
-        }
+                // Altera a cor da ul do contato atualmente selecionado
+                 $("#contato-" + currentClient).addClass("selected-contact");
+
+                // Atualiza a div de conversa com o nome do contato
+                updateConversation(name);
+    }
         console.log(currentClient);
     }
+    
 
     function updateConversation(nomeContato) {
         // Se não houver contato selecionado, esconde o h2
