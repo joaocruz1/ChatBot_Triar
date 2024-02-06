@@ -77,30 +77,29 @@
     }
 
     function changeClient(number=null, name=null){
-
         if (currentClient != null) {
             // Remove a classe 'selected' da ul do contato anteriormente selecionado
-            $("#contato-" + currentClient).removeClass("selected");
+            $("#contacts .contato-list").removeClass("selected-contact");
     }
 
         currentClient = number;
 
         if (currentClient == null){
-         document.getElementById('sendButton').disabled = true;
-    }
+            document.getElementById('sendButton').disabled = true;
+        }
         else{
-                document.getElementById('sendButton').disabled = false;
-                 // Adiciona a classe 'selected' à ul do contato atualmente selecionado
-                $("#contato-" + currentClient).addClass("selected");
+            document.getElementById('sendButton').disabled = false;
+            // Adiciona a classe 'selected' à ul do contato atualmente selecionado
+            $("#contato-" + currentClient).addClass("selected");
 
-                // Altera a cor da ul do contato atualmente selecionado
-                 $("#contato-" + currentClient).addClass("selected-contact");
+            // Adiciona a classe 'selected-contact' à ul do contato atualmente selecionado
+            $("#contato-" + currentClient + " .contato-list").addClass("selected-contact");
 
-                // Atualiza a div de conversa com o nome do contato
-                updateConversation(name);
+        // Atualiza a div de conversa com o nome do contato
+            updateConversation(name);
     }
         console.log(currentClient);
-    }
+}
     
 
     function updateConversation(nomeContato) {
