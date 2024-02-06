@@ -75,6 +75,7 @@ ul {
 }
 
 li {
+    font-size: 20px;
     list-style: none;
     cursor: pointer;
     color: black;
