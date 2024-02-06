@@ -1,120 +1,117 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <title>Chat App</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Chat App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
 
-        <header>
-            <div  class="header1">
-                <img src="logo.png" alt="Logo" id="logo">
-                <p style="max-width: fit-content; margin: 10px;">
-                    Triar ChatHub
-                </p>
-            </div>
-            <div>
-                
-            </div>
-            <div class="header2">
-            <p style="max-width: fit-content; margin: 10px;">
-                {{name}}
-            </p>
-            <img src="{{url_for('static', filename=picture)}}" alt="Profile Picture" id="profPic">
-            </div>
-        </header>
+<header>
+    <div class="header1">
+        <img src="logo.png" alt="Logo" id="logo">
+        <p style="max-width: fit-content; margin: 10px;">
+            Triar ChatHub
+        </p>
+    </div>
+    <div>
 
-        <div id="container" class="grid-container">
-          <div id="contacts" class="grid-item">
-            <h2>Contacts</h2>
-            {% for contato_key, contato in contatos.items() %}
-              <ul class="contato-list" id="contato-{{ contato_key }}">
-                <li onclick="changeClient('{{ contato['number']}}')" class="contato">{{ contato['name'] }}</li>
-                <li> {{ contato['number'] }}</li>
-              </ul>
-            {% endfor %}
-          </div>
+    </div>
+    <div class="header2">
+        <p style="max-width: fit-content; margin: 10px;">
+            {{name}}
+        </p>
+        <img src="{{url_for('static', filename=picture)}}" alt="Profile Picture" id="profPic">
+    </div>
+</header>
 
-            <div id="chat" class="grid-item">
-                
-                <div id="conversation">
-                    <h2>{{text}}</h2>
-                </div>
-                <div class="message-input">
-                    <input type="text" id="messageInput" placeholder="Digite sua mensagem">
-                    <button id="sendButton" onclick="sendMessage()" disabled>Send</button>
-                </div>
-            </div>
-        </div>
-    </body>
-    <script>
-        var currentClient
+<div id="container" class="grid-container">
+  <div id="contacts" class="grid-item">
+    <h2>Contacts</h2>
+    {% for contato_key, contato in contatos.items() %}
+      <ul class="contato-list" id="contato-{{ contato_key }}">
+        <li onclick="changeClient('{{ contato['number']}}', '{{ contato['name'] }}')" class="contato">{{ contato['name'] }}</li>
+        <li> {{ contato['number'] }}</li>
+      </ul>
+    {% endfor %}
+  </div>
 
-       function sendMessage(){
-    let message = document.getElementById('messageInput').value;
-    
-    $.ajax({
-        url: '/sendMessage',
-        type: 'POST',
-        data: {
-            'number': currentClient,
-            'text': message
-        },
-        success: function(response){
-            // Atualiza a div de conversa com a mensagem enviada
-            $("#conversation").append("<p>" + message + "</p>");
-            console.log(response);
-        },
-        error: function(error){
-            console.log(error);
-        }
+    <div id="chat" class="grid-item">
         
-    });
+        <div id="conversation">
+            <h2>{{text}}</h2>
+        </div>
+        <div class="message-input">
+            <input type="text" id="messageInput" placeholder="Digite sua mensagem">
+            <button id="sendButton" onclick="sendMessage()" disabled>Send</button>
+        </div>
+    </div>
+</div>
+<script>
+    var currentClient;
 
-    document.getElementById('messageInput').value = "";
-}
-    function changeClient(number=null){
-    if (currentClient != null) {
-        // Remove a classe 'selected' da ul do contato anteriormente selecionado
-        $("#contato-" + currentClient).removeClass("selected");
+    function sendMessage() {
+        let message = document.getElementById('messageInput').value;
+        
+        $.ajax({
+            url: '/sendMessage',
+            type: 'POST',
+            data: {
+                'number': currentClient,
+                'text': message
+            },
+            success: function(response){
+                // Atualiza a div de conversa com a mensagem enviada
+                $("#conversation").append("<p>" + message + "</p>");
+                console.log(response);
+            },
+            error: function(error){
+                console.log(error);
+            }
+        });
+
+        // Limpa o texto do input após enviar a mensagem
+        document.getElementById('messageInput').value = "";
     }
 
-    currentClient = number;
+    function changeClient(number=null, name=null){
+        if (currentClient != null) {
+            // Remove a classe 'selected' da ul do contato anteriormente selecionado
+            $("#contato-" + currentClient).removeClass("selected");
+        }
 
-    if (currentClient == null){
-        document.getElementById('sendButton').disabled = true;
+        currentClient = number;
+
+        if (currentClient == null){
+            document.getElementById('sendButton').disabled = true;
+        }
+        else{
+            document.getElementById('sendButton').disabled = false;
+            // Adiciona a classe 'selected' à ul do contato atualmente selecionado
+            $("#contato-" + currentClient).addClass("selected");
+
+            // Atualiza a div de conversa com o nome do contato
+            updateConversation(name);
+        }
+        console.log(currentClient);
     }
-    else{
-        document.getElementById('sendButton').disabled = false;
-        // Adiciona a classe 'selected' à ul do contato atualmente selecionado
-        $("#contato-" + currentClient).addClass("selected");
 
-        // Atualiza a div de conversa com o nome do contato
-        updateConversation();
-    }
-    console.log(currentClient);
-}
-
-        function updateConversation() {
-    // Obtém o nome do contato atualmente selecionado
-    var nomeContato = currentClient ? contatos[currentClient].name : '';
-
-    // Se não houver contato selecionado, esconde o h2
-    if (!currentClient) {
-        $("#conversation h2").hide();
-    } else {
-        // Atualiza ou adiciona o h2 na div de conversa
-        if ($("#conversation h2").length) {
-            $("#conversation h2").text("Conversa com " + nomeContato).show();
+    function updateConversation(nomeContato) {
+        // Se não houver contato selecionado, esconde o h2
+        if (!currentClient) {
+            $("#conversation h2").hide();
         } else {
-            $("#conversation").prepend("<h2>Conversa com " + nomeContato + "</h2>");
+            // Atualiza ou adiciona o h2 na div de conversa
+            if ($("#conversation h2").length) {
+                $("#conversation h2").text("Conversa com " + nomeContato).show();
+            } else {
+                $("#conversation").prepend("<h2>Conversa com " + nomeContato + "</h2>");
+            }
         }
     }
-}
-
-
-    </script>
+</script>
+</body>
 </html>
+
