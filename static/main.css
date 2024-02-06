@@ -59,11 +59,11 @@ header {
 
 #contacts {
     border-right: 1px solid #ccc;
-    align-items: center;
+    
 }
 
 ul {
-      padding: 40px;
+      padding: 35px;
       margin: 5px;
       display: inline-block;
       border-radius: 10px;
