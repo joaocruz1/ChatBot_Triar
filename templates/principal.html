@@ -7,22 +7,7 @@
     <title>Chat App</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        // Função para atualizar a div de conversa
-        function updateConversation(text) {
-            // Se não houver texto, esconde o h2
-            if (!text) {
-                $("#conversation h2").hide();
-            } else {
-                // Atualiza ou adiciona o h2 na div de conversa
-                if ($("#conversation h2").length) {
-                    $("#conversation h2").text(text).show();
-                } else {
-                    $("#conversation").prepend("<h2>" + text + "</h2>");
-                }
-            }
-        }
-    </script>
+    
 </head>
 <body>
 
@@ -133,9 +118,7 @@
             }
         }
     }
-    $(document).ready(function() {
-            updateConversation('{{ text }}');
-        });
+    
 </script>
 </body>
 </html>
