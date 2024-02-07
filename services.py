@@ -297,6 +297,6 @@ def administrar_chatbot(text,number, messageId, name):
     for item in list:
         enviar_Mensagem_whatsapp(item)
 
-    return text,person
+    return text
 
  

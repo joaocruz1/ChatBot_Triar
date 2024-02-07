@@ -6,6 +6,23 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Chat App</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        // Função para atualizar a div de conversa
+        function updateConversation(text) {
+            // Se não houver texto, esconde o h2
+            if (!text) {
+                $("#conversation h2").hide();
+            } else {
+                // Atualiza ou adiciona o h2 na div de conversa
+                if ($("#conversation h2").length) {
+                    $("#conversation h2").text(text).show();
+                } else {
+                    $("#conversation").prepend("<h2>" + text + "</h2>");
+                }
+            }
+        }
+    </script>
 </head>
 <body>
 
@@ -38,17 +55,16 @@
     {% endfor %}
   </div>
 
-    <div id="chat" class="grid-item">
-        
-        <div id="conversation">
-            <h2>{{text}}</h2>
-            <p>{{person}}</p>
-        </div>
-        <div class="message-input">
-            <input type="text" id="messageInput" placeholder="Digite sua mensagem">
-            <button id="sendButton" onclick="sendMessage()" disabled>Send</button>
-        </div>
+  <div id="chat" class="grid-item">
+    <div id="conversation">
+        <!-- Adicione um parágrafo para exibir o conteúdo da variável text -->
+        <p id="conversationText"></p>
     </div>
+    <div class="message-input">
+        <input type="text" id="messageInput" placeholder="Digite sua mensagem">
+        <button id="sendButton" onclick="sendMessage()" disabled>Send</button>
+    </div>
+</div>
 </div>
 <script>
     var currentClient;
@@ -117,6 +133,9 @@
             }
         }
     }
+    $(document).ready(function() {
+            updateConversation('{{ text }}');
+        });
 </script>
 </body>
 </html>

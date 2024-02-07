@@ -31,7 +31,7 @@ def principal():
         return redirect(url_for('login'))
     user = users[session['user']]
     print(session.get('person'))
-    return render_template('principal.html', name=user['name'], picture="img/"+user['picture'],contatos=contatos, person=session.get('person', None))
+    return render_template('principal.html', name=user['name'], picture="img/"+user['picture'],contatos=contatos, text=session.get('text', None))
 
 @app.route('/authuser', methods=['POST'])
 def authuser():
@@ -98,7 +98,7 @@ def receber_mensagens():
         text = services.obtener_Mensagem_whatsapp(message)
 
         services.administrar_chatbot(text, number,messageId,name)
-        print(session.get('person'))
+        
         return 'enviado'
 
     except Exception as e:
