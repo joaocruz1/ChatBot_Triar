@@ -136,13 +136,13 @@
             }
 
             // Chama novamente a função após um intervalo de tempo
-            setTimeout(fetchMessage, 1000); // Intervalo de 1 segundo (ajuste conforme necessário)
+            setTimeout(fetchMessage, 10000); // Intervalo de 1 segundo (ajuste conforme necessário)
         },
         error: function(jqXHR, textStatus, errorThrown){
             console.error('Erro AJAX:', textStatus, errorThrown);
 
             // Chama novamente a função após um intervalo de tempo em caso de erro
-            setTimeout(fetchMessage, 5000); // Intervalo de 5 segundos em caso de erro (ajuste conforme necessário)
+            setTimeout(fetchMessage, 20000); // Intervalo de 5 segundos em caso de erro (ajuste conforme necessário)
         }
     });
 }
