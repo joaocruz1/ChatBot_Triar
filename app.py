@@ -70,7 +70,7 @@ def sendMessage():
 def  fetch_message():
     try:
         # Assuming you have some logic to obtain the message, replace the following line accordingly
-        message = services.obtener_Mensagem_whatsapp(message)
+        message = services.obtener_Mensagem_whatsapp()
 
         # Return the message in JSON format
         return jsonify({'message': message})
