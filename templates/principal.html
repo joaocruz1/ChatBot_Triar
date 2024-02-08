@@ -117,6 +117,26 @@
             }
         }
     }
+
+    function fetchMessage() {
+        $.ajax({
+            url: '/fetchMessage',  // Rota no servidor para obter a mensagem
+            type: 'GET',
+            success: function(response){
+                // Atualiza a div de conversa com a mensagem recebida do servidor
+                $("#conversationText").text(response);
+                console.log(response);
+            },
+            error: function(error){
+                console.log(error);
+            }
+        });
+    }
+
+    // Chama a função fetchMessage() assim que a página é carregada
+    $(document).ready(function() {
+        fetchMessage();
+    });
     
 </script>
 </body>
