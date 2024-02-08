@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, render_template, url_for, session
+from flask import Flask, request, redirect, render_template, url_for, session, jsonify
 import sett 
 import services
 import json
@@ -65,6 +65,18 @@ def sendMessage():
         return 'OK'
     except Exception as e:
         return 'não enviado '+str(e)
+    
+@app.route('/fetchMessage', methods=['GET'])
+def  fetch_message():
+    try:
+        # Assuming you have some logic to obtain the message, replace the following line accordingly
+        message = services.obtener_Mensagem_whatsapp()
+
+        # Return the message in JSON format
+        return jsonify({'message': message})
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 
 @app.route('/webhook', methods=['GET'])
