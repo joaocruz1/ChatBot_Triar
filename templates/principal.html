@@ -119,20 +119,38 @@
     }
 
     function fetchMessage() {
-        $.ajax({
-            url: '/fetchMessage',  // Rota no servidor para obter a mensagem
-            type: 'GET',
-            success: function(response){
-                // Atualiza a div de conversa com a mensagem recebida do servidor
-                $("#conversationText").text(response);
-                console.log(response);
-            },
-            error: function(error){
-                console.log(error);
+    $.ajax({
+        url: '/fetchMessage',
+        type: 'GET',
+        dataType: 'json',
+        success: function(response){
+            if ('message' in response) {
+                var receivedMessage = response.message;
+                // Verifica se a mensagem mudou antes de atualizar
+                if (receivedMessage !== $("#conversationText").text()) {
+                    $("#conversationText").text(receivedMessage);
+                    console.log('Nova mensagem:', receivedMessage);
+                }
+            } else {
+                console.error('Formato de resposta inválido:', response);
             }
-        });
-    }
 
+            // Chama novamente a função após um intervalo de tempo
+            setTimeout(fetchMessage, 1000); // Intervalo de 1 segundo (ajuste conforme necessário)
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+            console.error('Erro AJAX:', textStatus, errorThrown);
+
+            // Chama novamente a função após um intervalo de tempo em caso de erro
+            setTimeout(fetchMessage, 5000); // Intervalo de 5 segundos em caso de erro (ajuste conforme necessário)
+        }
+    });
+}
+
+// Chama a função fetchMessage assim que a página é carregada
+$(document).ready(function() {
+    fetchMessage();
+});
     // Chama a função fetchMessage() assim que a página é carregada
     $(document).ready(function() {
         fetchMessage();
