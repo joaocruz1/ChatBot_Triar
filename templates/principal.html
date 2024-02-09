@@ -118,25 +118,31 @@
         }
     }
 
-    // Função para enviar uma solicitação AJAX para obter o valor da função obtener_Mensagem_whatsapp()
-    function fetchMessage() {
+var previousMessage = "";
+
+    // Função para buscar a mensagem do servidor
+    function fetchMessageAndUpdate() {
         $.ajax({
             url: '/fetchMessage',  // Rota no servidor para obter a mensagem
             type: 'GET',
             success: function(response){
-                // Atualiza a div de conversa com a mensagem recebida do servidor
-                $("#conversationText").text(response);
-                console.log(response);
+                // Se o valor retornado for diferente do valor anterior, atualiza a interface do usuário
+                if (response !== previousMessage) {
+                    $("#conversationText").text(response);
+                    console.log("Mensagem atualizada: " + response);
+                    previousMessage = response;
+                }
             },
             error: function(error){
-                console.log(error);
+                console.log("Erro ao buscar mensagem: " + error);
             }
         });
     }
 
-    // Chama a função fetchMessage() assim que a página é carregada
+    // Chama a função fetchMessageAndUpdate() a cada 5 segundos
     $(document).ready(function() {
-        fetchMessage();
+        fetchMessageAndUpdate();  // Chama imediatamente ao carregar a página
+        setInterval(fetchMessageAndUpdate, 5000);  // Chama a cada 5 segundos
     });
     
 </script>
