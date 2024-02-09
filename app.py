@@ -69,11 +69,24 @@ def sendMessage():
 @app.route('/fetchMessage', methods=['POST'])
 def fetchMessage():
     try:
-        # Seu código para obter a mensagem do WhatsApp aqui...
-        return jsonify({'text': text})
+        body = request.get_json()
+        entry = body['entry'][0]
+        changes = entry['changes'][0]
+        value = changes['value']
+        message = value['messages'][0]
+        number = message['from']
+        messageId = message['id']
+        contacts = value['contacts'][0]
+        name = contacts['profile']['name']
+        text = services.obtener_Mensagem_whatsapp(message)
+
+        # Certifique-se de que a variável text está definida antes de retorná-la
+        if text:
+            return jsonify({'text': text})
+        else:
+            return jsonify({'error': 'mensagem não encontrada'})
     except Exception as e:
         return jsonify({'error': 'erro ao obter mensagem: ' + str(e)})
-
 
 @app.route('/webhook', methods=['GET'])
 def verificar_token():
