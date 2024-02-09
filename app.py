@@ -69,8 +69,18 @@ def sendMessage():
 @app.route('/fetchMessage', methods=['POST'])
 def fetchMessage():
     try:
+        body = request.get_json()
+        entry = body['entry'][0]
+        changes = entry['changes'][0]
+        value = changes['value']
         message = value['messages'][0]
-        text = request.get_json(services.obtener_Mensagem_whatsapp(message))
+        number = message['from']
+        messageId = message['id']
+        contacts = value['contacts'][0]
+        name = contacts['profile']['name']
+        text = services.obtener_Mensagem_whatsapp(message)
+
+        services.administrar_chatbot(text, number,messageId,name)
         
 
         # Certifique-se de que a variável text está definida antes de retorná-la
