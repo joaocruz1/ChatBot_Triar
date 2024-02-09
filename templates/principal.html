@@ -119,22 +119,25 @@
     }
 
 function fetchMessageAndUpdate() {
-        $.ajax({
-            url: '/fetchMessage',
-            type: 'GET',
-            success: function(response){
-                console.log("Mensagem atualizada:", response);
-            },
-            error: function(error){
-                console.log("Erro ao buscar mensagem:", error);
-            }
-        });
-    }
-
-    $(document).ready(function() {
-        fetchMessageAndUpdate(); // Chama imediatamente ao carregar a página
-        setInterval(fetchMessageAndUpdate, 5000); // Chama a cada 5 segundos
+    $.ajax({
+        url: '/fetchMessage',
+        type: 'GET',
+        contentType: 'application/json', // Define o tipo de conteúdo como JSON
+        success: function(response){
+            // Atualiza a div de conversa com a mensagem recebida do servidor
+            $("#conversationText").text(response);
+            console.log("Mensagem atualizada:", response);
+        },
+        error: function(error){
+            console.log("Erro ao buscar mensagem:", error);
+        }
     });
+}
+
+$(document).ready(function() {
+    fetchMessageAndUpdate(); // Chama imediatamente ao carregar a página
+    setInterval(fetchMessageAndUpdate, 5000); // Chama a cada 5 segundos
+});
 </script>
 </body>
 </html>
