@@ -69,20 +69,10 @@ def sendMessage():
 @app.route('/fetchMessage', methods=['POST'])
 def fetchMessage():
     try:
-        body = request.get_json()
-        entry = body['entry'][0]
-        changes = entry['changes'][0]
-        value = changes['value']
-        message = value['messages'][0]
-        number = message['from']
-        messageId = message['id']
-        contacts = value['contacts'][0]
-        name = contacts['profile']['name']
-        text = services.obtener_Mensagem_whatsapp(message)
-
-        return jsonify({'text': text})  # Retorna a resposta como um objeto JSON
+        # Seu código para obter a mensagem do WhatsApp aqui...
+        return jsonify({'text': text})
     except Exception as e:
-        return jsonify({'error': 'erro ao obter mensagem: ' + str(e)})  # Retorna um objeto JSON em caso de erro
+        return jsonify({'error': 'erro ao obter mensagem: ' + str(e)})
 
 
 @app.route('/webhook', methods=['GET'])
