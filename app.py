@@ -66,7 +66,7 @@ def sendMessage():
     except Exception as e:
         return 'não enviado '+str(e)
     
-@app.route('/fetchMessage', methods=['GET'])
+@app.route('/fetchMessage', methods=['POST'])
 def fetchMessage():
     try:
         body = request.get_json()
