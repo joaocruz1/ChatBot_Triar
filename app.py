@@ -66,7 +66,7 @@ def sendMessage():
     except Exception as e:
         return 'não enviado '+str(e)
     
-@app.route('/fetchMessage', methods=['POST'])
+@app.route('/fetchMessage', methods=['GET'])
 def fetchMessage():
     try:
         body = request.get_json()
@@ -80,7 +80,7 @@ def fetchMessage():
         name = contacts['profile']['name']
         text = services.obtener_Mensagem_whatsapp(message)
 
-        services.administrar_chatbot(text, number,messageId,name)
+
         
 
         # Certifique-se de que a variável text está definida antes de retorná-la
