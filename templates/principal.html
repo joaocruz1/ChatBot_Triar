@@ -118,33 +118,23 @@
         }
     }
 
-var previousMessage = "";
-
-    // Função para buscar a mensagem do servidor
-    function fetchMessageAndUpdate() {
+function fetchMessageAndUpdate() {
         $.ajax({
-            url: '/fetchMessage',  // Rota no servidor para obter a mensagem
+            url: '/fetchMessage',
             type: 'GET',
             success: function(response){
-                // Se o valor retornado for diferente do valor anterior, atualiza a interface do usuário
-                if (response !== previousMessage) {
-                    $("#conversationText").text(response);
-                    console.log("Mensagem atualizada: " + response);
-                    previousMessage = response;
-                }
+                console.log("Mensagem atualizada:", response);
             },
             error: function(error){
-                console.log("Erro ao buscar mensagem: " + error);
+                console.log("Erro ao buscar mensagem:", error);
             }
         });
     }
 
-    // Chama a função fetchMessageAndUpdate() a cada 5 segundos
     $(document).ready(function() {
-        fetchMessageAndUpdate();  // Chama imediatamente ao carregar a página
-        setInterval(fetchMessageAndUpdate, 5000);  // Chama a cada 5 segundos
+        fetchMessageAndUpdate(); // Chama imediatamente ao carregar a página
+        setInterval(fetchMessageAndUpdate, 5000); // Chama a cada 5 segundos
     });
-    
 </script>
 </body>
 </html>
