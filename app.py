@@ -80,7 +80,7 @@ def fetchMessage():
         name = contacts['profile']['name']
         text = services.obtener_Mensagem_whatsapp(message)
 
-        return jsonify(text)
+        return text
     except Exception as e:
         return 'erro ao obter mensagem: ' + str(e)
 
