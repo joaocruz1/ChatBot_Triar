@@ -121,12 +121,17 @@
 function fetchMessageAndUpdate() {
     $.ajax({
         url: '/fetchMessage',
-        type: 'GET',
-        contentType: 'application/json', // Define o tipo de conteúdo como JSON
+        type: 'POST', // Alterado para POST para corresponder à definição da rota no servidor
+        contentType: 'application/json',
         success: function(response){
-            // Atualiza a div de conversa com a mensagem recebida do servidor
-            $("#conversationText").text(response);
-            console.log("Mensagem atualizada:", response);
+            // Verifique se a resposta contém a chave 'text'
+            if ('text' in response) {
+                // Atualiza a div de conversa com o texto da mensagem
+                $("#conversationText").text(response.text);
+                console.log("Mensagem atualizada:", response.text);
+            } else {
+                console.log("Resposta inválida do servidor:", response);
+            }
         },
         error: function(error){
             console.log("Erro ao buscar mensagem:", error);
