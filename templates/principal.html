@@ -120,7 +120,7 @@
 
 function fetchMessageAndUpdate() {
     $.ajax({
-        url: '/webhook',
+        url: '/fetchMessage',
         type: 'GET',
         contentType: 'application/json', // Define o tipo de conteúdo como JSON
         success: function(response){
