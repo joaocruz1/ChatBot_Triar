@@ -67,16 +67,13 @@ def sendMessage():
         return 'não enviado '+str(e)
     
 @app.route('/fetchMessage', methods=['GET'])
-def  fetch_message():
+def fetchMessage():
     try:
-        # Assuming you have some logic to obtain the message, replace the following line accordingly
-        message = services.obtener_Mensagem_whatsapp()
-
-        # Return the message in JSON format
-        return jsonify({'message': message})
-
+        # Chama a função obtener_Mensagem_whatsapp() para obter a mensagem
+        message = services.obtener_Mensagem_whatsapp(message)
+        return jsonify(message)
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        return 'erro ao obter mensagem: ' + str(e)
 
 
 @app.route('/webhook', methods=['GET'])
