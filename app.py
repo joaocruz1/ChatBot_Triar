@@ -80,9 +80,9 @@ def fetchMessage():
         name = contacts['profile']['name']
         text = services.obtener_Mensagem_whatsapp(message)
 
-        return text
+        return jsonify({'text': text})  # Retorna a resposta como um objeto JSON
     except Exception as e:
-        return 'erro ao obter mensagem: ' + str(e)
+        return jsonify({'error': 'erro ao obter mensagem: ' + str(e)})  # Retorna um objeto JSON em caso de erro
 
 
 @app.route('/webhook', methods=['GET'])
