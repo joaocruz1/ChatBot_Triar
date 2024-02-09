@@ -69,6 +69,7 @@ def sendMessage():
 @app.route('/fetchMessage', methods=['POST'])
 def fetchMessage():
     try:
+        message = value['messages'][0]
         text = request.get_json(services.obtener_Mensagem_whatsapp(message))
         
 
