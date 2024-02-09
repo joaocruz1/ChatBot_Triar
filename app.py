@@ -70,7 +70,7 @@ def sendMessage():
 def fetchMessage():
     try:
         # Chama a função obtener_Mensagem_whatsapp() para obter a mensagem
-        message = "Mensagem obtida do servidor"  # Substitua pela chamada real da função obtener_Mensagem_whatsapp()
+        message = services.obtener_Mensagem_whatsapp(message)  
         return jsonify(message)
     except Exception as e:
         return 'erro ao obter mensagem: ' + str(e)
