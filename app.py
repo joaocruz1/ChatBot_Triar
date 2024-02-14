@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, render_template, url_for, session, jsonify
+from flask import Flask, request, redirect, render_template, url_for, session, jsonify, cross_origin
 import sett 
 import services
 import json
@@ -67,6 +67,7 @@ def sendMessage():
         return 'não enviado '+str(e)
     
 @app.route('/fetchMessage', methods=['GET'])
+@cross_origin()
 def  fetch_message():
     try:
         # Assuming you have some logic to obtain the message, replace the following line accordingly
