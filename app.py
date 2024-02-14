@@ -74,7 +74,7 @@ def  fetch_message():
         message = services.obtener_Mensagem_whatsapp()
 
         # Return the message in JSON format
-        return jsonify({'message': message})
+        return jsonify({'message': str(message)})
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
