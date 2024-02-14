@@ -116,39 +116,31 @@
         }
     }
 
-    function fetchMessage() {
+function fetchMessageAndUpdate() {
     $.ajax({
         url: '/fetchMessage',
-        type: 'GET',
-        dataType: 'json',
+        type: 'GET', // Alterado para POST para corresponder à definição da rota no servidor
+        contentType: 'application/json',
         success: function(response){
-            if ('message' in response) {
-                var receivedMessage = response.message;
-                // Verifica se a mensagem mudou antes de atualizar
-                if (receivedMessage !== $("#conversationText").text()) {
-                    $("#conversationText").text(receivedMessage);
-                    console.log('Nova mensagem:', receivedMessage);
-                }
+            // Verifique se a resposta contém a chave 'text'
+            if ('text' in response) {
+                // Atualiza a div de conversa com o texto da mensagem
+                $("#conversationText").text(response.text);
+                console.log("Mensagem atualizada:", response.text);
             } else {
-                console.error('Formato de resposta inválido:', response);
+                console.log("Resposta inválida do servidor:", response);
             }
-
-            // Chama novamente a função após um intervalo de tempo
-            setTimeout(fetchMessage, 10000); // Intervalo de 10 segundos (ajuste conforme necessário)
         },
-        error: function(jqXHR, textStatus, errorThrown){
-            console.error('Erro AJAX:', textStatus, errorThrown);
-
-            // Chama novamente a função após um intervalo de tempo em caso de erro
-            setTimeout(fetchMessage, 20000); // Intervalo de 20 segundos em caso de erro (ajuste conforme necessário)
+        error: function(error){
+            console.log("Erro ao buscar mensagem:", error);
         }
     });
 }
-    // Chama a função fetchMessage() assim que a página é carregada
-    $(document).ready(function() {
-        fetchMessage();
-    });
-    
+
+$(document).ready(function() {
+    fetchMessageAndUpdate(); // Chama imediatamente ao carregar a página
+    setInterval(fetchMessageAndUpdate, 5000); // Chama a cada 5 segundos
+});
 </script>
 </body>
 </html>
