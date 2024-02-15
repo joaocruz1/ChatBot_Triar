@@ -119,7 +119,7 @@
 function fetchMessageAndUpdate() {
     $.ajax({
         url: '/fetchMessage',
-        type: 'GET', // Alterado para POST para corresponder à definição da rota no servidor
+        type: 'GET', 
         contentType: 'application/json',
         success: function(response){
             // Verifique se a resposta contém a chave 'text'
