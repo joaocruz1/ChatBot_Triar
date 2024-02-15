@@ -69,11 +69,19 @@ def sendMessage():
 @app.route('/fetchMessage', methods=['GET'])
 def  fetch_message():
     try:
-        # Assuming you have some logic to obtain the message, replace the following line accordingly
-        message = services.obtener_Mensagem_whatsapp()
-
+        body = request.get_json()
+        entry = body['entry'][0]
+        changes = entry['changes'][0]
+        value = changes['value']
+        message = value['messages'][0]
+        number = message['from']
+        messageId = message['id']
+        contacts = value['contacts'][0]
+        name = contacts['profile']['name']
+        text = services.obtener_Mensagem_whatsapp(message)
+        
         # Return the message in JSON format
-        return jsonify({'message': str(message)})
+        return jsonify({'message': str(text)})
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
