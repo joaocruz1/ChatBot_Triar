@@ -67,33 +67,6 @@ def sendMessage():
     except Exception as e:
         return 'não enviado '+str(e)
     
-@app.route('/fetchMessage', methods=['GET'])
-def fetch_message():
-    try:
-        # Adicione instruções de registro para depuração
-        print("Recebendo solicitação de busca de mensagem...")
-        
-        # Obtenha os parâmetros da solicitação GET
-        number = request.args.get('from')
-        messageId = request.args.get('id')
-        name = request.args.get('name')
-
-        # Verifique se todos os parâmetros necessários estão presentes
-        if not all([number, messageId, name]):
-            raise ValueError("Parâmetros incompletos")
-
-        # Simule a obtenção de uma mensagem (substitua esta linha pelo seu código real)
-        text = f"Mensagem para {name} de {number} com ID {messageId}"
-
-        # Retorne a mensagem em formato JSON
-        return jsonify({'message': str(text)})
-
-    except Exception as e:
-        # Registre qualquer exceção que ocorra para depuração
-        print(f"Erro ao buscar mensagem: {e}")
-
-        # Retorne uma resposta de erro 500 com detalhes da exceção
-        return jsonify({'error': str(e)}), 500
         
 @app.route('/webhook', methods=['GET'])
 def verificar_token():
@@ -132,6 +105,20 @@ def receber_mensagens():
 
     except Exception as e:
         return 'não enviado ' + str(e)
+
+@app.route('/fetchMessage', methods=['GET'])
+def fetch_message():
+    try:
+        message = receber_mensagens()
+        return jsonify({'message': str(message)})
+
+    except Exception as e:
+        
+        print(f"Erro ao buscar mensagem: {e}")
+
+        
+        return jsonify({'error': str(e)}), 500
+
 
 if __name__ == '__main__':
     app.run()
