@@ -68,24 +68,21 @@ def sendMessage():
         return 'não enviado '+str(e)
     
 @app.route('/fetchMessage', methods=['GET'])
-def  fetch_message():
+def fetch_message():
     try:
-         body = request.get_json()
-         entry = body['entry'][0]
-         changes = entry['changes'][0]
-         value = changes['value']
-         message = value['messages'][0]
-         number = message['from']
-         messageId = message['id']
-         contacts = value['contacts'][0]
-         name = contacts['profile']['name']
-         text = services.obtener_Mensagem_whatsapp(message)
-        
+         number = request.args.get('from')  # Obtém o número do remetente da solicitação GET.
+         messageId = request.args.get('id')  # Obtém o ID da mensagem da solicitação GET.
+         name = request.args.get('name')  # Obtém o nome do remetente da solicitação GET.
+
+         if not all([number, messageId, name]):  # Verifica se todos os parâmetros necessários estão presentes.
+             raise ValueError("Parâmetros incompletos")
+
+         text = services.obtener_Mensagem_whatsapp(request.args)  # Passa toda a solicitação para a função de obtenção de mensagem.
+
          return jsonify({'message': str(text)})
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
 
 @app.route('/webhook', methods=['GET'])
 def verificar_token():
