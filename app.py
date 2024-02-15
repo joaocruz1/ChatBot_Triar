@@ -70,20 +70,31 @@ def sendMessage():
 @app.route('/fetchMessage', methods=['GET'])
 def fetch_message():
     try:
-         number = request.args.get('from')  # Obtém o número do remetente da solicitação GET.
-         messageId = request.args.get('id')  # Obtém o ID da mensagem da solicitação GET.
-         name = request.args.get('name')  # Obtém o nome do remetente da solicitação GET.
+        # Adicione instruções de registro para depuração
+        print("Recebendo solicitação de busca de mensagem...")
+        
+        # Obtenha os parâmetros da solicitação GET
+        number = request.args.get('from')
+        messageId = request.args.get('id')
+        name = request.args.get('name')
 
-         if not all([number, messageId, name]):  # Verifica se todos os parâmetros necessários estão presentes.
-             raise ValueError("Parâmetros incompletos")
+        # Verifique se todos os parâmetros necessários estão presentes
+        if not all([number, messageId, name]):
+            raise ValueError("Parâmetros incompletos")
 
-         text = services.obtener_Mensagem_whatsapp(request.args)  # Passa toda a solicitação para a função de obtenção de mensagem.
+        # Simule a obtenção de uma mensagem (substitua esta linha pelo seu código real)
+        text = f"Mensagem para {name} de {number} com ID {messageId}"
 
-         return jsonify({'message': str(text)})
+        # Retorne a mensagem em formato JSON
+        return jsonify({'message': str(text)})
 
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        # Registre qualquer exceção que ocorra para depuração
+        print(f"Erro ao buscar mensagem: {e}")
 
+        # Retorne uma resposta de erro 500 com detalhes da exceção
+        return jsonify({'error': str(e)}), 500
+        
 @app.route('/webhook', methods=['GET'])
 def verificar_token():
     try:
