@@ -11,6 +11,7 @@ from contacts import contatos
 app = Flask(__name__)
 app.secret_key = 'qualquer string serve'
 
+
 @app.route('/', methods=['GET'])
 def  inicio():
     print(session)
@@ -69,17 +70,7 @@ def sendMessage():
 @app.route('/fetchMessage', methods=['GET'])
 def  fetch_message():
     try:
-        body = request.get_json()
-        entry = body['entry'][0]
-        changes = entry['changes'][0]
-        value = changes['value']
-        message = value['messages'][0]
-        number = message['from']
-        messageId = message['id']
-        contacts = value['contacts'][0]
-        name = contacts['profile']['name']
-        text = services.obtener_Mensagem_whatsapp(message)
-        
+        text = receber_mensagens()
         # Return the message in JSON format
         return jsonify({'message': str(text)})
 
@@ -119,7 +110,8 @@ def receber_mensagens():
 
         services.administrar_chatbot(text, number,messageId,name)
         
-        return 'enviado'
+        
+        return text
 
     except Exception as e:
         return 'não enviado ' + str(e)
