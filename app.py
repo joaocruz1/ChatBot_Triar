@@ -113,7 +113,7 @@ def fetch_message():
         return jsonify({'text': str(message)})
     except Exception as e:
         print(f"Erro ao buscar mensagem: {e}")
-        return jsonify({'error': str(e)}), 500
+        return jsonify({'errorr': str(e)}), 500
 
 
 
