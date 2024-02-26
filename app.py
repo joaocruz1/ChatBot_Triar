@@ -110,14 +110,11 @@ def receber_mensagens():
 def fetch_message():
     try:
         message = receber_mensagens()
-        return jsonify({'message': str(message)})
-
+        return jsonify({'text': str(message)})
     except Exception as e:
-        
         print(f"Erro ao buscar mensagem: {e}")
-
-        
         return jsonify({'error': str(e)}), 500
+
 
 
 if __name__ == '__main__':
