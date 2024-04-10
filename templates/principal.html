@@ -116,26 +116,7 @@
         }
     }
 
-function fetchMessageAndUpdate() {
-    $.ajax({
-        url: '/fetchMessage',
-        type: 'GET', // Alterado para POST para corresponder à definição da rota no servidor
-        contentType: 'application/json',
-        success: function(response){
-            // Verifique se a resposta contém a chave 'text'
-            if ('text' in response) {
-                // Atualiza a div de conversa com o texto da mensagem
-                $("#conversationText").text(response.text);
-                console.log("Mensagem atualizada:", response.text);
-            } else {
-                console.log("Resposta inválida do servidor:", response);
-            }
-        },
-        error: function(error){
-            console.log("Erro ao buscar mensagem:", error);
-        }
-    });
-}
+
 
 $(document).ready(function() {
     fetchMessageAndUpdate(); // Chama imediatamente ao carregar a página

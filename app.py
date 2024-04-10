@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, render_template, url_for, session, jsonify, cross_origin
+from flask import Flask, request, redirect, render_template, url_for, session, jsonify
 import sett 
 import services
 import json
@@ -10,6 +10,7 @@ from contacts import contatos
 
 app = Flask(__name__)
 app.secret_key = 'qualquer string serve'
+
 
 @app.route('/', methods=['GET'])
 def  inicio():
@@ -66,20 +67,7 @@ def sendMessage():
     except Exception as e:
         return 'não enviado '+str(e)
     
-@app.route('/fetchMessage', methods=['GET'])
-@cross_origin()
-def  fetch_message():
-    try:
-        # Assuming you have some logic to obtain the message, replace the following line accordingly
-        message = services.obtener_Mensagem_whatsapp()
-
-        # Return the message in JSON format
-        return jsonify({'message': str(message)})
-
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
-
-
+        
 @app.route('/webhook', methods=['GET'])
 def verificar_token():
     try:
@@ -112,10 +100,16 @@ def receber_mensagens():
 
         services.administrar_chatbot(text, number,messageId,name)
         
-        return 'enviado'
+        
+        return text
 
     except Exception as e:
         return 'não enviado ' + str(e)
+
+
+
+
+
 
 if __name__ == '__main__':
     app.run()
