@@ -227,78 +227,73 @@ def administrar_chatbot(text,number, messageId, name):
     list.append(markRead_Mensagem(messageId))
     time.sleep(2)
 
+    if  verifyFirst(text):
+        body = "Olá "+name+" 👋, seja bem vindo a Emi, sou seu assistente virtual 🤖, qual seria sua dúvida ?"
+        footer = "Equipe Triar"
+        options = ["🛎️Recepção", "🤵‍♀️RH","🧾Fiscal","💸Financeiro","📒Contábil", "✅Cadastro e Legalização","👨‍💻Sistemas e Aplicativos"]
 
-    if person == False:
+        list.append(listReply_Messagem(number, options, body, footer, "sed1",messageId))
+        list.append(replyReaction_Messagem(number, messageId, "🫡"))
+    
+    elif "recepção" in text:
+        body = "Quer falar com quem da recepção? "
+        footer = "Equipe Recepção 👇"
+        options = ["Ariane", "Larissa Trindade"]
 
-        if  verifyFirst(text):
-            body = "Olá "+name+" 👋, seja bem vindo a Emi, sou seu assistente virtual 🤖, qual seria sua dúvida ?"
-            footer = "Equipe Triar"
-            options = ["🛎️Recepção", "🤵‍♀️RH","🧾Fiscal","💸Financeiro","📒Contábil", "✅Cadastro e Legalização","👨‍💻Sistemas e Aplicativos"]
+        list.append(buttonReply_Messagem(number, options, body, footer, "sed2",messageId))
 
-            list.append(listReply_Messagem(number, options, body, footer, "sed1",messageId))
-            list.append(replyReaction_Messagem(number, messageId, "🫡"))
-        
-        elif "recepção" in text:
-            body = "Quer falar com quem da recepção? "
-            footer = "Equipe Recepção 👇"
-            options = ["Ariane", "Larissa Trindade"]
+    elif "rh" in text:
+        body = "Quer falar com quem do RH?"
+        footer = "Equipe RH 👇"
+        options = ["Sarah Olanda","Camila Melo","Heloisa Faria","Divina Silveira"]
 
-            list.append(buttonReply_Messagem(number, options, body, footer, "sed2",messageId))
+        list.append(listReply_Messagem(number, options, body, footer, "sed3",messageId))
 
-        elif "rh" in text:
-            body = "Quer falar com quem do RH?"
-            footer = "Equipe RH 👇"
-            options = ["Sarah Olanda","Camila Melo","Heloisa Faria","Divina Silveira"]
+    elif "fiscal" in text:
+        body = "Quer falar com quem do fiscal? "
+        footer = "Equipe Fiscal 👇"
+        options = ["Aline Castro","Bianca Lima","Bruna Ribeiro","Claudia Santos","Endi Jacometti","Larissa Cavini","Ludmilla Ferreira","Monica Antonioli","Rayssa Marin"]
 
-            list.append(listReply_Messagem(number, options, body, footer, "sed3",messageId))
+        list.append(listReply_Messagem(number, options, body, footer, "sed4",messageId))
 
-        elif "fiscal" in text:
-            body = "Quer falar com quem do fiscal? "
-            footer = "Equipe Fiscal 👇"
-            options = ["Aline Castro","Bianca Lima","Bruna Ribeiro","Claudia Santos","Endi Jacometti","Larissa Cavini","Ludmilla Ferreira","Monica Antonioli","Rayssa Marin"]
+    elif "contábil" in text :
+        body = "Quer falar com quem do Contábil?"
+        footer = "Equipe Contabil 👇"
+        options = ["Arnold Freitas", "Davi dos Santos", "Leonardo Biagioli","Traciane Lemes"]
 
-            list.append(listReply_Messagem(number, options, body, footer, "sed4",messageId))
+        list.append(listReply_Messagem(number, options, body, footer, "sed5",messageId))
 
-        elif "contábil" in text :
-            body = "Quer falar com quem do Contábil?"
-            footer = "Equipe Contabil 👇"
-            options = ["Arnold Freitas", "Davi dos Santos", "Leonardo Biagioli","Traciane Lemes"]
+    elif "financeiro" in text:
+        body = "Quer falar com quem do Financeiro?"
+        footer = "Equipe Financeiro 👇"
+        options = ["Ana Paula"]
 
-            list.append(listReply_Messagem(number, options, body, footer, "sed5",messageId))
+        list.append(buttonReply_Messagem(number, options, body, footer, "sed6",messageId))
+    
+    elif "cadastro e legalização" in text:
+        body = "Quer falar com quem do Cadastro?"
+        footer = "Equipe Cadastro e Legalização 👇"
+        options = ["Márcia Braz", "Alana Gabriela", "Lara Serra","Thatiele"]
 
-        elif "financeiro" in text:
-            body = "Quer falar com quem do Financeiro?"
-            footer = "Equipe Financeiro 👇"
-            options = ["Ana Paula"]
+        list.append(listReply_Messagem(number, options, body, footer, "sed7",messageId))
 
-            list.append(buttonReply_Messagem(number, options, body, footer, "sed6",messageId))
-        
-        elif "cadastro e legalização" in text:
-            body = "Quer falar com quem do Cadastro?"
-            footer = "Equipe Cadastro e Legalização 👇"
-            options = ["Márcia Braz", "Alana Gabriela", "Lara Serra","Thatiele"]
+    elif "sistemas e aplicativos" in text:
+        body = "Quer falar com quem de Sistemas e Aplicativos?"
+        footer = "Sistemas e Aplicativos 👇"
+        options = ["João Cruz","Yan Martins"]
 
-            list.append(listReply_Messagem(number, options, body, footer, "sed7",messageId))
-
-        elif "sistemas e aplicativos" in text:
-            body = "Quer falar com quem de Sistemas e Aplicativos?"
-            footer = "Sistemas e Aplicativos 👇"
-            options = ["João Cruz","Yan Martins"]
-
-            list.append(buttonReply_Messagem(number, options, body, footer, "sed8",messageId))
-        elif "joão cruz" in text:
-            body = "Encaminhei sua mensagem para o João. Ele responderá em minutos. Aguarde sua resposta. 😊" 
-            person = True
+        list.append(buttonReply_Messagem(number, options, body, footer, "sed8",messageId))
+    elif "joão cruz" in text:
+        body = "Encaminhei sua mensagem para o João. Ele responderá em minutos. Aguarde sua resposta. 😊" 
+        person = True
 
 
-            list.append(text_Mensagem(number,body))
-            list.append(replyReaction_Messagem(number, messageId, "👍"))
+        list.append(text_Mensagem(number,body))
+        list.append(replyReaction_Messagem(number, messageId, "👍"))
 
-        else :
-            data = text_Mensagem(number,"Não entendi sua pergunta, para voltar para o menu inicial digite '1' ")
-            list.append(data)
-    else:
-        pass
+    else :
+        data = text_Mensagem(number,"Não entendi sua pergunta, para voltar para o menu inicial digite '1' ")
+        list.append(data)
 
     for item in list:
         enviar_Mensagem_whatsapp(item)
