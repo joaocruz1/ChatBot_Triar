@@ -75,4 +75,4 @@ Contato 📬
 Se você tiver dúvidas ou sugestões sobre o sistema, fique à vontade para entrar em contato via:
 
 Instagram: @joaovcruz1
-E-mail: joao.cruz@example.com
+E-mail: joaovcruz50@gmail.com
