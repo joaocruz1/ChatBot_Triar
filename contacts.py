@@ -10,7 +10,7 @@ contatos = {
     2: {
         "name": "Yan",
         "number": "5535999218509"
-    }
+    },
     3: {
         "name": "Jabu",
         "number": "5535999218509"
